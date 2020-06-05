@@ -1,0 +1,26 @@
+.capabilities {
+    grid-column: col-start 1 / col-end 9;
+
+    &__grid {
+
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+        text-align: center;
+    }
+    }
+    &__head {
+
+        &__list {
+            list-style: none;
+            text-decoration: none;
+        }
+        &__items {
+         font-size: 2rem;
+        }
+    }
+}
+.large {
+    font-size: 5rem;
+}

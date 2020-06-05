@@ -1,0 +1,61 @@
+
+$color-primary-dark: #28b485;
+$color-primary-light: #7ed56f;
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$color-gray-dark: #777;
+$color-gray-dark-2: #999;
+$color-gray-dark-3: #333;
+$color-white: #fff;
+$color-black: #000;
+$color-gray-light-1: #f7f7f7;
+$color-gray-light-2: #eee;
+
+
+
+
+// COLOR VARIABLES
+$color-primary: #00083D;
+$color-primary-grey: #5B6E80;
+
+$color-secondary: #101d2c;
+
+$color-text: #0062FF;
+$color-dark: #121212;
+
+$color-white: #fff;
+// FONT VARIABLES
+$font-primary: 'monospace', sans-serif;
+$font-display: 'Open Sans', sans-serif;
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+
+
+body {
+    font-family: $font-primary;
+    color: $color-primary-grey;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: min-content 80vh 80vh repeat(6,min-content);
+    grid-template-columns: [nav-start full-start] 1fr [nav-end] repeat(9,[col-start] minmax(min-content,10rem) [col-end] )  1fr [full-end];
+    grid-gap: 2rem;
+}

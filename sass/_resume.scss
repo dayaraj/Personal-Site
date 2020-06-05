@@ -1,0 +1,32 @@
+.resume {
+    grid-column: 1 / -1;
+    margin-top: 5rem;
+
+    &__img {
+   
+       background-image: url(../img/resume.png);
+        background-size: cover;
+        height: 100%;
+    }
+
+      &__flex {
+            display: flex;
+            justify-content: space-evenly;
+        &__left {
+            margin-left: 2rem;
+            &__head {
+                font-size: 1.75rem;
+                font-weight: 400;
+                margin-left: 5rem;
+            }
+            &__text {
+                font-size: 1.5rem;
+                margin-left: 5rem;
+            }
+        }
+        &__right {
+            margin-right: 5rem;
+        }
+       
+    }
+}

@@ -1,0 +1,20 @@
+.contact {
+    margin-top: 5rem;
+    grid-column: col-start 1 / col-end 9;
+    display: flex;
+    justify-content: space-between;
+
+    &__right {
+        align-self: flex-end;
+        margin-bottom: 2rem;
+        &__text {
+            font-size: 2rem;
+        }
+    }
+}
+.pulse {
+    background-color: $color-text;
+    height: 3px;
+    width: 3px;
+    border-radius: 999px;
+}

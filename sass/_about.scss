@@ -1,0 +1,23 @@
+.about {
+    &__photo {
+ 
+            grid-column: 2 / 6;
+    }
+    &__img {
+        width: 35rem;
+        height: 50rem;
+   
+      
+    }
+    &__content {
+        grid-column: 6 / 11;
+        align-self: center;
+    }
+    &__text {
+        &__desc {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+
+}

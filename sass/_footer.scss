@@ -1,0 +1,19 @@
+.footer {
+    margin-top: 5rem;
+    grid-column: col-start 1 / col-end 9;
+    &__text {
+        font-size: 1.75rem;
+        text-align: center;
+        font-weight: 400;
+    }
+    &__icons {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        &__icon{
+            height: 4rem;
+            width: 4rem;
+            margin: 1rem;
+        }
+    }
+}
