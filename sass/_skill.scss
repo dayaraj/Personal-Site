@@ -1,5 +1,8 @@
 .skill {
     grid-column: col-start 1 / col-end 9;
+    @media only screen and (max-width: $bp-small) {
+      margin-top: -10rem;
+  }
 
     &__container {
         display: flex;

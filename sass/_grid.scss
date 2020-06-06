@@ -25,9 +25,14 @@ $gutter-horizontal: 6rem;
         float: left;
     &:not(:last-child) {
         margin-right: $gutter-horizontal;
-        
+        @media only screen and (max-width: $bp-small) {
+           margin-right: 0;
+           margin-bottom: 8rem;
+        }
              }
-            
+             @media only screen and (max-width: $bp-small) {
+                width: 100% !important;
+             }
     }
 
     .col-1-of-3 {

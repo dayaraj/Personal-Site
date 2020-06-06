@@ -77,4 +77,23 @@
 }
 .mg-tp {
     margin-top: 3rem;
+    @media only screen and (max-width: $bp-medium) {
+        margin-top: 2.5rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        margin-top: 2rem;
+    }
+}
+.mg-vtp {
+    margin-top: 10rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        margin-top: -25rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        margin-top: 5rem;
+    }
+
 }

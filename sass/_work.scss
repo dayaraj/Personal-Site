@@ -47,8 +47,6 @@
         background-size: cover;
         height: 23rem;
         background-blend-mode: screen;
-        -webkit-clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
-        clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         &--1 {
@@ -66,12 +64,22 @@
     &__heading {
         font-size: 2rem;
         font-weight: 300;
-        text-align: right;
+        text-align: center;
         color: $color-primary;
         position: absolute;
         top: 25rem;
-        right: 2rem;
+        right: 5rem;
         width: 70%;
+
+        @media only screen and (max-width: $bp-medium) {
+            right: 4rem;
+        }
+        @media only screen and (max-width: $bp-medium) {
+            top: 26rem;
+            right: 8rem;
+        }
+
+
     }
     &__heading-span {
         padding: 1rem 1.5rem;
@@ -98,6 +106,13 @@
     &__details {
         padding: 3rem;
         margin-top: 3rem;
+
+        @media only screen and (max-width: $bp-medium) {
+            margin-top: 6rem;
+        }
+        
+        
+
         ul {
             list-style: none;
             width: 80%;
@@ -110,6 +125,9 @@
             &:not(:last-child) {
              border-bottom: 1px solid $color-gray-light-2;
             }
+            @media only screen and (max-width: $bp-small) {
+                font-size: 1.7rem;
+             }
 
         }
     }
@@ -130,11 +148,11 @@
 
         }
         &__back-only {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             text-transform: uppercase;
         }
         &__back-value {
-            font-size: 6rem;
+            font-size: 4rem;
             font-weight: 100;
         }
 }
