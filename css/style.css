@@ -193,7 +193,7 @@ body {
     .about__photo {
       grid-column: 2 / 11;
       grid-row: 4 / -1;
-      margin-top: -70rem;
+      margin-top: -65rem;
       justify-self: center; } }
 
 .about__img {
@@ -213,7 +213,7 @@ body {
     .about__content {
       grid-row: 3 / -1;
       grid-column: 2 / 11;
-      margin-top: -80rem;
+      margin-top: -75rem;
       text-align: center; } }
 
 .about__text__desc {
@@ -327,7 +327,7 @@ body {
         border-bottom: 1px solid #eee; }
       @media only screen and (max-width: 43.75em) {
         .card__details li {
-          font-size: 1.7rem; } }
+          font-size: 1.7 rem; } }
   .card__cta {
     position: absolute;
     top: 50%;
@@ -424,11 +424,27 @@ body {
   grid-column: col-start 1 / col-end 9;
   display: flex;
   justify-content: space-between; }
+  @media only screen and (max-width: 43.75em) {
+    .contact {
+      flex-direction: column;
+      justify-content: flex-start; } }
   .contact__right {
     align-self: flex-end;
     margin-bottom: 2rem; }
+    @media only screen and (max-width: 43.75em) {
+      .contact__right {
+        align-self: center;
+        margin-top: 2rem;
+        text-align: center; } }
     .contact__right__text {
       font-size: 2rem; }
+      @media only screen and (max-width: 43.75em) {
+        .contact__right__text {
+          font-size: 1.5 rem; } }
+  @media only screen and (max-width: 43.75em) {
+    .contact__left {
+      align-self: center;
+      text-align: center; } }
 
 .pulse {
   background-color: #0062FF;
@@ -462,6 +478,9 @@ body {
     font-size: 1.75rem;
     text-align: center;
     font-weight: 400; }
+    @media only screen and (max-width: 43.75em) {
+      .footer__text {
+        font-size: 1.5 rem; } }
   .footer__icons {
     display: flex;
     align-content: center;

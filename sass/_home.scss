@@ -25,6 +25,11 @@
     &__list {
         font-size: 2rem;
         margin-right: 4rem;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1rem;
+            margin-right: 2rem;
+         }
        
     }
     &__links {

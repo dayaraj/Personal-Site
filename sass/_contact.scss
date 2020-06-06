@@ -4,12 +4,31 @@
     display: flex;
     justify-content: space-between;
 
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+        justify-content: flex-start;
+     }
+
     &__right {
         align-self: flex-end;
         margin-bottom: 2rem;
+        @media only screen and (max-width: $bp-small) {
+            align-self: center;
+            margin-top: 2rem;
+            text-align: center;
+         }
         &__text {
             font-size: 2rem;
+            @media only screen and (max-width: $bp-small) {
+                font-size: 1.5 rem;
+             }
         }
+    }
+    &__left {
+        @media only screen and (max-width: $bp-small) {
+            align-self: center;
+            text-align: center;
+         }
     }
 }
 .pulse {
