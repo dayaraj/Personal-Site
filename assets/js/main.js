@@ -185,6 +185,8 @@ Description: Gerold - Personal Portfolio HTML5 Template
 			},
 		});
 
+		
+
 		/*------------------------------------------------------
   	/ Testimonial Carousel
   	/------------------------------------------------------*/
@@ -438,3 +440,6 @@ Description: Gerold - Personal Portfolio HTML5 Template
 		}
 	});
 })(jQuery);
+document.querySelectorAll('a.lightbox-portfolio').forEach(function(anchor) {
+    anchor.setAttribute('target', '_blank');
+});

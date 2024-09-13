@@ -323,7 +323,7 @@
 		padding-bottom: 60px;
 	}
 	.portfolio-box .portfolio-item {
-		padding: 25px 15px 0 15px;
+		padding: 25px 15px 25px 15px;
 	}
 	.portfolio-box .content-box {
 		width: calc(100% - 30px);
