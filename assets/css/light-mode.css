@@ -51,7 +51,7 @@ body.light-mode {
 * ===============================
 */
 .light-mode .tj-header-area.header-2 {
-	background-color: var(--tj-off-white);
+	background-color: var(--tj-white);
 }
 .light-mode .tj-header-area .menu-bar button span {
 	background: var(--tj-theme-primary);
