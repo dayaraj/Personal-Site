@@ -607,7 +607,7 @@
             </p>
             <div class="hero-actions">
                 <a href="#work" class="btn-primary">View selected work</a>
-                <a href="/cdn-cgi/l/email-protection#781c190119381c0a1c561b1715561608" class="btn-ghost">Get in touch →</a>
+                <a href="mailto:dayaraj.dhungana07514@gmail.com" class="btn-ghost">Get in touch →</a>
             </div>
         </div>
         <div class="hero-footer">
@@ -943,7 +943,7 @@
             <p class="cta-sub">If you're building enterprise software, a B2B platform, or anything where the
                 complexity of the problem hasn't been matched by the quality of the design — I'd like to hear about it.</p>
             <div class="cta-actions">
-                <a href="/cdn-cgi/l/email-protection#2541445c44654157410b464a480b4b55" class="btn-light"><span class="__cf_email__" data-cfemail="6602071f07260214024805090b480816">[email&#160;protected]</span> ↗</a>
+                <a href="mailto:dayaraj.dhungana07514@gmail.com" class="btn-light">dayaraj.dhungana07514@gmail.com ↗</a>
                 <a href="https://www.linkedin.com/in/dayaraj07514/" class="btn-outline-light" target="_blank" rel="noopener">LinkedIn →</a>
                 <a href="https://github.com/dayaraj" class="btn-outline-light" target="_blank" rel="noopener">GitHub →</a>
             </div>
@@ -960,13 +960,12 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://www.linkedin.com/in/dayaraj07514/" target="_blank" rel="noopener">LinkedIn</a></li>
             <li><a href="https://github.com/dayaraj" target="_blank" rel="noopener">GitHub</a></li>
-            <!-- Add Behance below if your case studies live there -->
-            <!-- <li><a href="https://www.behance.net/YOUR_USERNAME" target="_blank" rel="noopener">Behance</a></li> -->
         </ul>
         <span class="footer-copy">© brewed with strong ☕ + extra ❤️ + sprinkled 😴</span>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
         const saved = localStorage.getItem('theme');
@@ -977,6 +976,7 @@
             localStorage.setItem('theme', next);
         });
 
+        // Mobile nav
         const navMobile = document.getElementById('navMobile');
         const navLinks  = document.getElementById('navLinks');
         function openMenu() { navLinks.classList.add('open'); navMobile.classList.add('open'); navMobile.setAttribute('aria-label','Close menu'); document.body.style.overflow='hidden'; }
@@ -984,6 +984,7 @@
         navMobile.addEventListener('click', () => navLinks.classList.contains('open') ? closeMenu() : openMenu());
         navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
 
+        // Particle canvas
         (function () {
             const canvas = document.getElementById('particleCanvas');
             const ctx    = canvas.getContext('2d');
@@ -1037,6 +1038,7 @@
             }
         })();
 
+        // Progress bar & nav scroll
         const progress = document.getElementById('progress');
         const nav      = document.getElementById('nav');
         function updateProgress() { const s=window.scrollY, d=document.documentElement.scrollHeight-window.innerHeight; progress.style.transform=`scaleX(${d>0?s/d:0})`; }
@@ -1044,5 +1046,12 @@
         window.addEventListener('scroll', () => { requestAnimationFrame(() => { updateProgress(); updateNav(); }); }, { passive: true });
         updateProgress(); updateNav();
 
+        // Scroll reveal
         const revealObs = new IntersectionObserver((entries) => {
-            entries.forEach((e,i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i*60); revealObs.unobserve(e.target); } }
+            entries.forEach((e,i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i*60); revealObs.unobserve(e.target); } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    </script>
+
+</body>
+</html>
