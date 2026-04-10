@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodAI Case Study · Daya Raj Dhungana</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root,
+        [data-theme="light"] {
+            --bg: #F7F5F0;
+            --bg-2: #EFECE5;
+            --bg-3: #E4DFD6;
+            --bg-4: #D5D0C6;
+            --text: #0D1B3E;
+            --text-2: #3A4565;
+            --text-3: #6B7490;
+            --text-4: #9BA3B8;
+            --navy-light: #E8EDF7;
+            --navy-muted: rgba(13, 27, 62, 0.06);
+            --accent: #C04A32;
+            --border: #E4DFD6;
+            --border-2: #D5D0C6;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+            --max: 1120px;
+            --text-max: 720px;
+            --gutter: clamp(1.5rem, 5vw, 4rem);
+            /* FoodAI brand colors */
+            --foodai-teal: #4DE0A3;
+            --foodai-blue: #0AA7FF;
+            --foodai-dark: #2C3968;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0F1626;
+            --bg-2: #162035;
+            --bg-3: #1E2B46;
+            --bg-4: #283A5C;
+            --text: #EEF0F6;
+            --text-2: #C5CCDE;
+            --text-3: #8B97B5;
+            --text-4: #5C6785;
+            --navy-light: #1E2B46;
+            --navy-muted: rgba(238, 240, 246, 0.06);
+            --accent: #E8654B;
+            --border: #1E2B46;
+            --border-2: #283A5C;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::selection {
+            background: var(--navy-light);
+            color: var(--text);
+        }
+
+        /* PROGRESS */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--foodai-teal);
+            z-index: 1001;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        /* NAV */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0.9rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: color-mix(in srgb, var(--bg) 93%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .nav.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 56px;
+            width: auto;
+            transition: filter 0.3s;
+        }
+
+        [data-theme="dark"] .nav-logo img {
+            filter: invert(1) brightness(1.1);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            position: relative;
+            z-index: 60;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-3);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            font-size: 0.78rem !important;
+            font-weight: 500 !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border-2) !important;
+            padding: 0.48rem 1.15rem !important;
+            border-radius: 2px !important;
+            transition: all 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--text) !important;
+            color: var(--bg) !important;
+            border-color: var(--text) !important;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-2);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background: var(--navy-muted);
+            border-color: var(--text-3);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            color: var(--text-2);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(20deg);
+        }
+
+        [data-theme="light"] .theme-toggle .moon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun {
+            display: none;
+        }
+
+        .nav-mobile {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            gap: 5.5px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-mobile span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-mobile.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-mobile.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .nav-mobile.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-mobile {
+                display: flex;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 74px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg);
+                padding: 2rem var(--gutter) 3rem;
+                gap: 0;
+                z-index: 50;
+                justify-content: flex-start;
+                overflow-y: auto;
+            }
+
+            .nav-links.open li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open li:first-child {
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-links.open a {
+                font-size: 1.6rem;
+                font-weight: 300;
+                color: var(--text-2);
+                padding: 1rem 0;
+                display: block;
+                font-family: var(--serif);
+                letter-spacing: -0.01em;
+                text-decoration: none;
+            }
+
+            .nav-links.open .nav-cta {
+                border: none !important;
+                padding: 1rem 0 !important;
+                border-radius: 0 !important;
+                color: var(--accent) !important;
+                font-family: var(--serif) !important;
+                font-size: 1.6rem !important;
+                font-weight: 300 !important;
+                background: none !important;
+            }
+        }
+
+        /* ── CASE STUDY LAYOUT ── */
+        .cs-header {
+            padding: 10rem var(--gutter) 5rem;
+            max-width: var(--max);
+            margin: 0 auto;
+        }
+
+        .cs-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-3);
+            margin-bottom: 2rem;
+        }
+
+        .cs-breadcrumb a {
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cs-breadcrumb a:hover {
+            color: var(--text);
+        }
+
+        .cs-eyebrow {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--foodai-teal);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .cs-title {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.02;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .cs-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            max-width: 680px;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .cs-meta {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cs-meta-item {
+            padding: 1.5rem 0;
+            border-right: 1px solid var(--border);
+            padding-right: 1.5rem;
+            margin-right: 1.5rem;
+        }
+
+        .cs-meta-item:last-child {
+            border-right: none;
+        }
+
+        .cs-meta-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-4);
+            margin-bottom: 0.5rem;
+        }
+
+        .cs-meta-val {
+            font-size: 0.88rem;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        @media(max-width:900px) {
+            .cs-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cs-meta-item {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 1.25rem 0;
+            }
+        }
+
+        @media(max-width:500px) {
+            .cs-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* HERO VISUAL */
+        .cs-hero-visual {
+            max-width: var(--max);
+            margin: 0 auto 6rem;
+            padding: 0 var(--gutter);
+        }
+
+        .cs-hero-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
+        /* BODY COPY */
+        .cs-body {
+            max-width: var(--text-max);
+            margin: 0 auto;
+            padding: 0 var(--gutter) 5rem;
+        }
+
+        .cs-section-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-4);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cs-section-label::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--text-4);
+        }
+
+        .cs-section-title {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+            color: var(--text);
+            margin-bottom: 1.75rem;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .cs-body p {
+            font-size: 1rem;
+            color: var(--text-2);
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .cs-body strong {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .cs-body h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin: 2.5rem 0 0.75rem;
+        }
+
+        .cs-body ul {
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+            list-style: none;
+            color: var(--text-2);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.85;
+        }
+
+        .cs-body ul li {
+            padding: 0.35rem 0 0.35rem 1.25rem;
+            position: relative;
+        }
+
+        .cs-body ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--foodai-teal);
+            font-size: 0.75rem;
+            top: 0.55rem;
+        }
+
+        /* DIVIDER */
+        .cs-divider {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+            border-top: 1px solid var(--border);
+        }
+
+        /* QUOTE */
+        .cs-quote {
+            margin: 3rem 0;
+            padding: 2rem 2rem 2rem 2.5rem;
+            background: var(--bg-2);
+            border-left: 3px solid var(--foodai-teal);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .cs-quote blockquote {
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            color: var(--text);
+            line-height: 1.5;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .cs-quote cite {
+            font-size: 0.78rem;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-style: normal;
+        }
+
+        /* CALLOUT */
+        .cs-callout {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            border: 1px solid var(--border-2);
+            background: var(--navy-light);
+            border-radius: 4px;
+        }
+
+        [data-theme="dark"] .cs-callout {
+            background: var(--bg-3);
+        }
+
+        .cs-callout-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--foodai-teal);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .cs-callout p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* FULL WIDTH IMAGE */
+        .cs-img-full {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .cs-img-full img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            display: block;
+            background: var(--bg-2);
+        }
+
+        .cs-img-caption {
+            font-size: 0.82rem;
+            color: var(--text-3);
+            margin-top: 1rem;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* BEFORE AFTER */
+        .cs-before-after {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .cs-before-after-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .ba-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .ba-tag {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.3rem 0.85rem;
+            border-radius: 2px;
+            width: max-content;
+            font-weight: 500;
+        }
+
+        .ba-tag.before {
+            background: rgba(192, 74, 50, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(192, 74, 50, 0.2);
+        }
+
+        .ba-tag.after {
+            background: rgba(77, 224, 163, 0.1);
+            color: #2E8B57;
+            border: 1px solid rgba(77, 224, 163, 0.3);
+        }
+
+        [data-theme="dark"] .ba-tag.after {
+            color: #4DE0A3;
+        }
+
+        .ba-item img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            display: block;
+            background: var(--bg-2);
+        }
+
+        .ba-item p {
+            font-size: 0.8rem;
+            color: var(--text-3);
+            line-height: 1.5;
+        }
+
+        @media(max-width:700px) {
+            .ba-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE SCREENS SHOWCASE */
+        .cs-mobile-showcase {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .mobile-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .mobile-screen {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mobile-screen img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: block;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            background: #fff;
+        }
+
+        .mobile-screen-label {
+            font-size: 0.72rem;
+            color: var(--text-3);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-align: center;
+        }
+
+        @media(max-width:900px) {
+            .mobile-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .mobile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* DESIGN SYSTEM SHOWCASE */
+        .cs-design-system {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .ds-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .ds-card {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .ds-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .ds-card-label {
+            padding: 1rem 1.25rem;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-2);
+        }
+
+        @media(max-width:700px) {
+            .ds-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* PROBLEM CARDS */
+        .cs-problems {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .problem-card {
+            padding: 1.75rem;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            border-top: 3px solid var(--accent);
+        }
+
+        .problem-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-desc {
+            font-size: 0.82rem;
+            color: var(--text-3);
+            line-height: 1.65;
+        }
+
+        @media(max-width:700px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ITERATION CARDS */
+        .cs-iterations {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .iteration-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .iteration-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .iteration-content {}
+
+        .iteration-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--foodai-teal);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .iteration-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .iteration-before {
+            margin-bottom: 1rem;
+        }
+
+        .iteration-before-label,
+        .iteration-after-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .iteration-before-label {
+            color: var(--accent);
+        }
+
+        .iteration-after-label {
+            color: #2E8B57;
+        }
+
+        [data-theme="dark"] .iteration-after-label {
+            color: #4DE0A3;
+        }
+
+        .iteration-before p,
+        .iteration-after p {
+            font-size: 0.88rem;
+            color: var(--text-2);
+            line-height: 1.65;
+            margin-bottom: 0;
+        }
+
+        .iteration-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        @media(max-width:700px) {
+            .iteration-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* IMPACT */
+        .cs-impact {
+            background: #0D1B3E;
+            padding: 5rem var(--gutter);
+        }
+
+        [data-theme="dark"] .cs-impact {
+            background: #060E1F;
+        }
+
+        .cs-impact-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+        }
+
+        .cs-impact-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .impact-val {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .impact-val em {
+            color: var(--foodai-teal);
+            font-style: normal;
+        }
+
+        .impact-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+        }
+
+        @media(max-width:900px) {
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* NEXT PROJECT */
+        .cs-next {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 6rem var(--gutter);
+        }
+
+        .cs-next-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+        }
+
+        .cs-next-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s;
+            letter-spacing: -0.02em;
+        }
+
+        .cs-next-title:hover {
+            color: var(--accent);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-2);
+            text-decoration: none;
+            padding: 0.85rem 1.75rem;
+            letter-spacing: 0.03em;
+            border: 1px solid var(--border-2);
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            color: var(--text);
+            border-color: var(--text);
+            background: var(--navy-muted);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #162244;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 1.75rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        [data-theme="dark"] footer {
+            background: #0D1B3E;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            opacity: 0.45;
+            transition: opacity 0.2s;
+        }
+
+        .footer-logo:hover {
+            opacity: 0.78;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.38);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress" id="progress"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">
+            <img src="logo.png" alt="Daya Raj Dhungana" />
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="all-work.html">Work</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" stroke-width="2" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                        stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <svg class="moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="nav-mobile" id="navMobile" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── HEADER ── -->
+    <header class="cs-header reveal">
+        <div class="cs-breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="all-work.html">Work</a>
+            <span>/</span>
+            <span>FoodAI</span>
+        </div>
+        <p class="cs-eyebrow">Mobile App · AI · Health & Nutrition</p>
+        <h1 class="cs-title">FoodAI: From a basic<br>scanner to a nutrition<br><em
+                style="font-style:italic; color:var(--foodai-teal);">companion.</em></h1>
+        <p class="cs-subtitle">What started as a request to "just change fonts and colors" became a complete UX
+            overhaul,
+            turning a disjointed food scanner into an intuitive daily nutrition tracker.</p>
+        <div class="cs-meta">
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">My Role</div>
+                <div class="cs-meta-val">UI/UX Designer</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Company</div>
+                <div class="cs-meta-val">Bitskraft</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Platform</div>
+                <div class="cs-meta-val">iOS & Android Mobile</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Type</div>
+                <div class="cs-meta-val">Full UX/UI Redesign</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Outcome</div>
+                <div class="cs-meta-val">4.2/5 Usability Score</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO: Full screens showcase -->
+    <div class="cs-hero-visual reveal">
+        <img src="foodai-all-screens.png" alt="FoodAI Redesigned Mobile Screens"
+            onerror="this.src='food-ai-preview.jpg'">
+    </div>
+
+    <!-- ── SECTION 1: CONTEXT ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">01 — Context</p>
+        <h2 class="cs-section-title">A reskin request that became a full redesign.</h2>
+        <p>FoodAI is a mobile app that uses AI to scan meals and break down their nutritional content like protein,
+            carbs,
+            and fat which then generates reports to help users track their intake over time.</p>
+        <p>When I joined the project at Bitskraft, the brief was a single line: <strong>"adjust the fonts and
+                colors."</strong> But five minutes with the existing app told me something else was going on. The
+            product had been built by developers with no UX input. It had screens. It didn't have a user journey.</p>
+        <p>I made the case for a broader redesign and got sign off to move forward. The constraint stayed: I had to work
+            within the existing technical architecture and stay close to the developer team throughout. That was fine.
+            Constraints make you sharper.</p>
+    </div>
+
+    <!-- ── SECTION 2: PROBLEMS ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">02 — Problems Identified</p>
+        <h2 class="cs-section-title">Three structural problems, not visual ones.</h2>
+        <p>Before touching Figma, I audited the existing app across navigation, user flow, and information hierarchy.
+            What I found wasn't a styling problem. It was a product problem.</p>
+    </div>
+
+    <div class="cs-problems reveal">
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-icon">🚪</div>
+                <div class="problem-title">No onboarding at all</div>
+                <div class="problem-desc">The app offered only social sign in, then dropped users straight onto a camera
+                    screen. No introduction, no goal setting, no context. First time users had no idea what they were
+                    supposed to do.</div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🗺️</div>
+                <div class="problem-title">Navigation with no logic</div>
+                <div class="problem-desc">Five tab bar items, no clear hierarchy. Nutrition tracking was buried inside
+                    Settings at the last place anyone would look for a primary feature. Users had to stumble across it.
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🔀</div>
+                <div class="problem-title">No distinction between now and history</div>
+                <div class="problem-desc">There was no way to log food in the moment. Everything went into a history log
+                    automatically, which collapsed two very different user intentions, "I'm eating this now" and "show
+                    me what I ate" into one confusing action.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Before screens -->
+    <div class="cs-before-after reveal">
+        <p class="cs-before-after-title">The original app — before redesign</p>
+        <div class="ba-grid">
+            <div class="ba-item">
+                <span class="ba-tag before">Before — Login</span>
+                <img src="foodai-old-login.png" alt="Old FoodAI Login Screen"
+                    onerror="this.src='https://placehold.co/600x700/f0f0f0/666666?text=Old+Login+Screen'">
+                <p>Social login only. No brand personality, no value proposition. Users had no idea what they were
+                    signing into or why they should.</p>
+            </div>
+            <div class="ba-item">
+                <span class="ba-tag before">Before — Home</span>
+                <img src="foodai-old-home.png" alt="Old FoodAI Home Screen"
+                    onerror="this.src='https://placehold.co/600x700/f0f0f0/666666?text=Old+Home+Screen'">
+                <p>Dropped immediately into a camera prompt. No nutritional context, no daily progress, no reason to
+                    come back tomorrow.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- ── SECTION 3: PROCESS ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">03 — Research & Process</p>
+        <h2 class="cs-section-title">Research first. Wireframes second. Pixels last.</h2>
+        <p>I gathered feedback from potential users across three areas: usability, visual clarity, and navigation flow.
+            The finding that kept coming up: <strong>users wanted nutrition tracking to feel like a daily habit, not a
+                utility they had to dig into.</strong></p>
+        <p>I built wireframes to explore new layouts and user flows before any visual work started. Getting the
+            structure right on paper meant catching flow problems early, before they became expensive to fix in Figma.
+        </p>
+
+        <h3>What research actually told me</h3>
+        <ul>
+            <li>Users expected to see their daily nutritional progress <strong>the moment they opened the app</strong>,
+                not after navigating somewhere</li>
+            <li>The distinction between "food I ate" and "food I'm logging right now" was mentally important to users,
+                they wanted to capture in the moment, separate from reviewing history</li>
+            <li>First time users needed goal setting context before the app felt relevant to their life</li>
+            <li>The nutritional terms themselves (carbs, protein, fat) were understood, what needed improvement was how
+                the data was shown</li>
+        </ul>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- ── SECTION 4: DESIGN SYSTEM ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">04 — Design System</p>
+        <h2 class="cs-section-title">Building the foundation before building screens.</h2>
+        <p>Before a single screen was designed, I built a complete design system in Figma. Not because it was in the
+            brief, but because building without one produces inconsistency that compounds with every new screen. The
+            developer team also needed a single source of truth to build from.</p>
+    </div>
+
+    <div class="cs-design-system reveal">
+        <div class="ds-grid">
+            <div class="ds-card">
+                <img src="foodai-typography.png" alt="FoodAI Typography System"
+                    onerror="this.src='https://placehold.co/700x400/ffffff/2C3968?text=Typography+System'">
+                <div class="ds-card-label">Typography: Roboto for headings, Quicksand for body copy. Clear, modern, and
+                    built to stay readable on small screens across all lighting conditions.</div>
+            </div>
+            <div class="ds-card">
+                <img src="foodai-colors.png" alt="FoodAI Color Palette"
+                    onerror="this.src='https://placehold.co/700x400/ffffff/2C3968?text=Color+Palette'">
+                <div class="ds-card-label">Color system: Teal (#4DE0A3) as primary, Blue (#0AA7FF) as accent, Ford Blue
+                    (#2C3968) for dark surfaces, with gradient ranges built specifically for nutrition chart
+                    visualisations.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-img-full reveal">
+        <img src="foodai-components.png" alt="FoodAI UI Components"
+            onerror="this.src='https://placehold.co/1120x600/f8f8f8/2C3968?text=UI+Component+Library'">
+        <p class="cs-img-caption">UI component library: button variants, form inputs, tab navigation states, nutrition
+            macro cards, calorie donut charts, and bar chart visualisations — all standardised before a single screen
+            was designed.</p>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- ── SECTION 5: ONBOARDING ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">05 — Onboarding Redesign</p>
+        <h2 class="cs-section-title">From zero context to a guided first time experience.</h2>
+        <p>The original app had no onboarding. Users hit a login screen and then immediately a camera. No explanation of
+            what the app did, no goal setup, nothing that made it feel like it was built for them.</p>
+        <p>The redesigned onboarding introduces FoodAI through a <strong>four step feature carousel</strong> (Welcome,
+            Scan & Track, View History, Generate Reports), then walks users through account creation and critically
+            <strong>a nutrition goal setting screen that appears immediately after signup.</strong>
+        </p>
+        <p>That goal setting screen was the most important addition in the entire project. Without it, the daily
+            progress indicators on the home screen had no target to measure against. Setting calories, carbs, protein,
+            and fat goals upfront made every subsequent interaction feel personally relevant, not generic.</p>
+    </div>
+
+    <div class="cs-img-full reveal">
+        <img src="foodai-onboarding-flow.png" alt="FoodAI Onboarding Flow Screens"
+            onerror="this.src='https://placehold.co/1120x700/2C3968/4DE0A3?text=Onboarding+Flow+Screens'">
+        <p class="cs-img-caption">New onboarding flow: feature walkthrough (4 slides) → login or signup → set daily
+            nutrition goal → home. Users arrive at the home screen with context and a personal target already in place.
+        </p>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- ── SECTION 6: FINAL SCREENS ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">06 — Final Design</p>
+        <h2 class="cs-section-title">A complete daily nutrition companion.</h2>
+        <p>The redesigned app covers every touchpoint in the nutrition tracking journey, from first open to daily habit.
+            Each screen was designed around how users actually interact with food tracking: quickly, in context,
+            expecting immediate feedback.</p>
+    </div>
+
+    <div class="cs-mobile-showcase reveal">
+        <div class="mobile-grid">
+            <div class="mobile-screen">
+                <img src="foodai-screen-home.png" alt="FoodAI Home Screen"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Home'">
+                <span class="mobile-screen-label">Home</span>
+            </div>
+            <div class="mobile-screen">
+                <img src="foodai-screen-history.png" alt="FoodAI History Screen"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=History'">
+                <span class="mobile-screen-label">History</span>
+            </div>
+            <div class="mobile-screen">
+                <img src="foodai-screen-capture.png" alt="FoodAI Capture Screen"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Capture'">
+                <span class="mobile-screen-label">Capture</span>
+            </div>
+            <div class="mobile-screen">
+                <img src="foodai-screen-report.png" alt="FoodAI Report Screen"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Report'">
+                <span class="mobile-screen-label">Report</span>
+            </div>
+            <div class="mobile-screen">
+                <img src="foodai-screen-settings.png" alt="FoodAI Settings Screen"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Settings'">
+                <span class="mobile-screen-label">Settings</span>
+            </div>
+            <div class="mobile-screen">
+                <img src="foodai-screen-scan-result.png" alt="FoodAI Scan Result"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Scan+Result'">
+                <span class="mobile-screen-label">Scan Result</span>
+            </div>
+            <div class="mobile-screen">
+                <img src="foodai-screen-food-detail.png" alt="FoodAI Food Detail"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Food+Detail'">
+                <span class="mobile-screen-label">Food Detail</span>
+            </div>
+            <div class="mobile-screen">
+                <img src="foodai-screen-goal-setup.png" alt="FoodAI Nutrition Goal"
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Goal+Setup'">
+                <span class="mobile-screen-label">Nutrition Goal</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- ── SECTION 7: TESTING ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">07 — Testing & Iterations</p>
+        <h2 class="cs-section-title">Two changes that came directly from users, not assumptions.</h2>
+        <p>After completing the initial redesign, I ran usability testing with a sample group. Each participant was
+            asked to do three things: sign in and set up their profile, capture a food image, and review their nutrition
+            tracking. I watched, noted where they hesitated, and where they got stuck.</p>
+        <p>Two friction points came up consistently. Both led to design changes before final delivery.</p>
+    </div>
+
+    <div class="cs-iterations reveal">
+
+        <div class="iteration-item">
+            <div class="iteration-content">
+                <span class="iteration-tag">Iteration 01 — Navigation</span>
+                <h3 class="iteration-title">Nutrition tracking moved out of Settings.</h3>
+                <div class="iteration-before">
+                    <span class="iteration-before-label">Before</span>
+                    <p>The "Set Nutrition Goal" feature lived inside the Settings menu. Getting there meant: Login →
+                        Settings → Set Nutrition Goal. None of the users I tested expected their most used daily feature
+                        to be in account settings. Several didn't find it at all.</p>
+                </div>
+                <div class="iteration-after">
+                    <span class="iteration-after-label">After</span>
+                    <p>Nutrition goal setting was moved into the onboarding flow, appearing <strong>immediately after
+                            signup</strong>. The home screen now shows daily progress against that goal on every open.
+                        Users set it once during onboarding and never have to find it again.</p>
+                </div>
+            </div>
+            <div class="iteration-visual">
+                <img src="foodai-iteration-nutrition.png" alt="Nutrition tracking iteration"
+                    onerror="this.src='https://placehold.co/600x800/f8f8f8/2C3968?text=Nutrition+Tracking+Iteration'">
+            </div>
+        </div>
+
+        <div class="iteration-item">
+            <div class="iteration-content">
+                <span class="iteration-tag">Iteration 02 — Interaction</span>
+                <h3 class="iteration-title">Added "I ate this!" to separate intent from browsing.</h3>
+                <div class="iteration-before">
+                    <span class="iteration-before-label">Before</span>
+                    <p>After scanning food, users could see nutritional information but couldn't do anything with it.
+                        Scanning automatically committed a log entry, which created confusion: users who scanned just to
+                        check a meal's macros didn't intend to log it. Intent wasn't captured.</p>
+                </div>
+                <div class="iteration-after">
+                    <span class="iteration-after-label">After</span>
+                    <p>A prominent <strong>"I ate this!"</strong> button was added to the food detail screen. Users can
+                        now scan freely to check nutrition without logging anything. When they're actually eating, one
+                        tap records it. Browsing and tracking became two separate, intentional actions.</p>
+                </div>
+            </div>
+            <div class="iteration-visual">
+                <img src="foodai-iteration-iate.png" alt="I ate this button iteration"
+                    onerror="this.src='https://placehold.co/600x800/f8f8f8/2C3968?text=I+Ate+This+Iteration'">
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-before-after reveal">
+        <p class="cs-before-after-title">Scan result screen: before and after</p>
+        <div class="ba-grid">
+            <div class="ba-item">
+                <span class="ba-tag before">Before — No logging action</span>
+                <img src="foodai-scan-before.png" alt="Scan result before"
+                    onerror="this.src='https://placehold.co/500x700/f0f0f0/666666?text=Before+Scan+Result'">
+                <p>Nutritional info shown, no action to log it. Users were passive viewers with no clear next step.</p>
+            </div>
+            <div class="ba-item">
+                <span class="ba-tag after">After — "I ate this!" action</span>
+                <img src="foodai-scan-after.png" alt="Scan result after"
+                    onerror="this.src='https://placehold.co/500x700/2C3968/4DE0A3?text=After+Scan+Result'">
+                <p>A clear, prominent logging action. Scan to browse, tap to track. Two different intentions, two
+                    different actions.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- ── IMPACT ── -->
+    <div class="cs-impact reveal">
+        <div class="cs-impact-inner">
+            <p class="cs-impact-label">08 — Outcomes</p>
+            <div class="impact-grid">
+                <div class="impact-metric">
+                    <div class="impact-val">4.2<em>/5</em></div>
+                    <div class="impact-desc">Usability score from post redesign testing</div>
+                </div>
+                <div class="impact-metric">
+                    <div class="impact-val">0<em>→</em>4</div>
+                    <div class="impact-desc">Onboarding screens added, from zero context to a guided first experience
+                    </div>
+                </div>
+                <div class="impact-metric">
+                    <div class="impact-val">2</div>
+                    <div class="impact-desc">Design iterations shipped based on real usability testing, not assumptions
+                    </div>
+                </div>
+                <div class="impact-metric">
+                    <div class="impact-val">1</div>
+                    <div class="impact-desc">Complete design system built from scratch before a single screen was
+                        designed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- ── SECTION 9: REFLECTION ── -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">09 — Reflection</p>
+        <h2 class="cs-section-title">What this project actually taught me.</h2>
+
+        <h3>Always audit before you execute</h3>
+        <p>The brief said "change fonts and colors." Accepting that would have produced a prettier version of a broken
+            product. Taking an hour to audit the existing experience revealed structural problems that cosmetic changes
+            would never fix. The better deliverable came from questioning the brief, not from following it.</p>
+
+        <h3>Onboarding is the first UX decision, not the last</h3>
+        <p>The nutrition goal setup wasn't in the original scope. But without it, the home screen's progress bar had no
+            meaning, it was a bar filling towards nothing. Adding goal setting to onboarding made every subsequent
+            screen work harder. One upfront investment removed countless downstream confusions.</p>
+
+        <h3>Staying close to developers prevents late surprises</h3>
+        <p>Working within an existing technical architecture meant some ideas had to be adapted. Staying in close
+            communication throughout, rather than handing over a final file and hoping for the best, meant feasibility
+            issues surfaced early. The shipped product matched the design intent. No costly rework.</p>
+
+        <div class="cs-quote">
+            <blockquote>"User-centred design isn't a phase. It's the lens through which every decision, even the small
+                ones, gets made."</blockquote>
+            <cite>Personal reflection on FoodAI</cite>
+        </div>
+    </div>
+
+    <!-- ── NEXT PROJECT ── -->
+    <div class="cs-next reveal">
+        <div class="cs-next-label">Next Project</div>
+        <a href="epl-case-study.html" class="cs-next-title">EPL Ramailo Nepal →</a>
+        <br>
+        <a href="all-work.html" class="btn-outline">← View all work</a>
+    </div>
+
+    <footer>
+        <a href="#" class="footer-logo">
+            <img src="favicon.png" alt="Daya Raj Dhungana" />
+        </a>
+        <ul class="footer-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://www.linkedin.com/in/dayaraj07514/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/dayaraj" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+        <span class="footer-copy">© brewed with strong ☕ + extra ❤️ + sprinkled 😴</span>
+    </footer>
+
+    <script>
+        // THEME
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        html.setAttribute('data-theme', saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        themeToggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // MOBILE NAV
+        const navMobile = document.getElementById('navMobile');
+        const navLinks = document.getElementById('navLinks');
+        function openMenu() { navLinks.classList.add('open'); navMobile.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { navLinks.classList.remove('open'); navMobile.classList.remove('open'); document.body.style.overflow = ''; }
+        navMobile.addEventListener('click', () => navLinks.classList.contains('open') ? closeMenu() : openMenu());
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+
+        // SCROLL PROGRESS + NAV
+        const progress = document.getElementById('progress');
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => {
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+                const s = window.scrollY;
+                const d = document.documentElement.scrollHeight - window.innerHeight;
+                progress.style.transform = `scaleX(${d > 0 ? s / d : 0})`;
+            });
+        }, { passive: true });
+
+        // SCROLL REVEAL
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), i * 50);
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+
+</html>

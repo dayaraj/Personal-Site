@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 · Page Not Found</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root,
+        [data-theme="light"] {
+            --bg: #F7F5F0;
+            --bg-2: #EFECE5;
+            --bg-3: #E4DFD6;
+            --bg-4: #D5D0C6;
+            --text: #0D1B3E;
+            --text-2: #3A4565;
+            --text-3: #6B7490;
+            --text-4: #9BA3B8;
+            --navy-light: #E8EDF7;
+            --navy-muted: rgba(13, 27, 62, 0.06);
+            --accent: #C04A32;
+            --border: #E4DFD6;
+            --border-2: #D5D0C6;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0F1626;
+            --bg-2: #162035;
+            --bg-3: #1E2B46;
+            --bg-4: #283A5C;
+            --text: #EEF0F6;
+            --text-2: #C5CCDE;
+            --text-3: #8B97B5;
+            --text-4: #5C6785;
+            --navy-light: #1E2B46;
+            --navy-muted: rgba(238, 240, 246, 0.06);
+            --accent: #E8654B;
+            --border: #1E2B46;
+            --border-2: #283A5C;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::selection {
+            background: var(--navy-light);
+            color: var(--text);
+        }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0.9rem clamp(1.5rem, 5vw, 4rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: color-mix(in srgb, var(--bg) 93%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 56px;
+            width: auto;
+            transition: filter 0.3s;
+        }
+
+        [data-theme="dark"] .nav-logo img {
+            filter: invert(1) brightness(1.1);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-2);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background: var(--navy-muted);
+            border-color: var(--text-3);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            color: var(--text-2);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(20deg);
+        }
+
+        [data-theme="light"] .theme-toggle .moon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun {
+            display: none;
+        }
+
+        /* ── 404 CONTENT ── */
+        .error-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem clamp(1.5rem, 5vw, 4rem);
+            text-align: center;
+        }
+
+        .error-content {
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .error-code {
+            font-family: var(--serif);
+            font-size: clamp(6rem, 15vw, 12rem);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            opacity: 0.1;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .error-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .error-title em {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .error-message {
+            font-size: 1rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .error-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--text);
+            color: var(--bg);
+            padding: 0.85rem 1.75rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 3px;
+            letter-spacing: 0.03em;
+            border: 1px solid var(--text);
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.82;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(13, 27, 62, 0.18);
+        }
+
+        [data-theme="dark"] .btn-primary:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-2);
+            text-decoration: none;
+            padding: 0.85rem 1.75rem;
+            letter-spacing: 0.03em;
+            border: 1px solid var(--border-2);
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: var(--text);
+            background: var(--navy-muted);
+        }
+
+        .error-suggestions {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .error-suggestions p {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .error-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .error-links a {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .error-links a:hover {
+            color: var(--text);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 600px) {
+            .error-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary,
+            .btn-ghost {
+                justify-content: center;
+            }
+
+            .error-links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">
+            <img src="logo.png" alt="Daya Raj Dhungana" />
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="all-work.html">Work</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" stroke-width="2" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                        stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <svg class="moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="nav-mobile" id="navMobile" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="error-container">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page not <em>found.</em></h1>
+            <p class="error-message">
+                This page doesn't exist, or the link is broken. It happens. Let's get you back to something useful.
+            </p>
+            <div class="error-actions">
+                <a href="index.html" class="btn-primary">← Back to home</a>
+                <a href="all-work.html" class="btn-ghost">View all work</a>
+            </div>
+            <div class="error-suggestions">
+                <p>Or try one of these:</p>
+                <div class="error-links">
+                    <a href="index.html#work">Work</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#process">Process</a>
+                    <a href="mailto:daya@drd.com.np">Get in touch</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // THEME
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const saved = localStorage.getItem('theme');
+        html.setAttribute('data-theme', saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+        themeToggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    </script>
+</body>
+
+</html>

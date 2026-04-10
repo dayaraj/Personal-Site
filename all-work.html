@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Work · Daya Raj Dhungana</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root,
+        [data-theme="light"] {
+            --bg: #F7F5F0;
+            --bg-2: #EFECE5;
+            --bg-3: #E4DFD6;
+            --bg-4: #D5D0C6;
+            --text: #0D1B3E;
+            --text-2: #3A4565;
+            --text-3: #6B7490;
+            --text-4: #9BA3B8;
+            --navy-light: #E8EDF7;
+            --navy-muted: rgba(13, 27, 62, 0.06);
+            --accent: #C04A32;
+            --border: #E4DFD6;
+            --border-2: #D5D0C6;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+            --max: 1120px;
+            --gutter: clamp(1.5rem, 5vw, 4rem);
+            --section-v: clamp(5rem, 10vw, 8rem);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0F1626;
+            --bg-2: #162035;
+            --bg-3: #1E2B46;
+            --bg-4: #283A5C;
+            --text: #EEF0F6;
+            --text-2: #C5CCDE;
+            --text-3: #8B97B5;
+            --text-4: #5C6785;
+            --navy-light: #1E2B46;
+            --navy-muted: rgba(238, 240, 246, 0.06);
+            --accent: #E8654B;
+            --border: #1E2B46;
+            --border-2: #283A5C;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::selection {
+            background: var(--navy-light);
+            color: var(--text);
+        }
+
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            z-index: 1001;
+            transform-origin: left;
+            will-change: transform;
+            transform: scaleX(0);
+        }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0.9rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: color-mix(in srgb, var(--bg) 93%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .nav.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 56px;
+            width: auto;
+            transition: filter 0.3s;
+        }
+
+        [data-theme="dark"] .nav-logo img {
+            filter: invert(1) brightness(1.1);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            position: relative;
+            z-index: 60;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-3);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            font-size: 0.78rem !important;
+            font-weight: 500 !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border-2) !important;
+            padding: 0.48rem 1.15rem !important;
+            border-radius: 2px !important;
+            transition: all 0.2s !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--text) !important;
+            color: var(--bg) !important;
+            border-color: var(--text) !important;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-2);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background: var(--navy-muted);
+            border-color: var(--text-3);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            color: var(--text-2);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(20deg);
+        }
+
+        [data-theme="light"] .theme-toggle .moon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun {
+            display: none;
+        }
+
+        .nav-mobile {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            gap: 5.5px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-mobile span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-mobile.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-mobile.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .nav-mobile.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-mobile {
+                display: flex;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 74px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg);
+                padding: 2rem var(--gutter) 3rem;
+                gap: 0;
+                z-index: 50;
+                justify-content: flex-start;
+                overflow-y: auto;
+            }
+
+            .nav-links.open li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open li:first-child {
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-links.open a {
+                font-size: 1.6rem;
+                font-weight: 300;
+                color: var(--text-2);
+                padding: 1rem 0;
+                display: block;
+                font-family: var(--serif);
+                letter-spacing: -0.01em;
+                text-decoration: none;
+            }
+
+            .nav-links.open a::after {
+                display: none;
+            }
+
+            .nav-links.open a:hover {
+                color: var(--text);
+            }
+
+            .nav-links.open .nav-cta {
+                border: none !important;
+                padding: 1rem 0 !important;
+                border-radius: 0 !important;
+                color: var(--accent) !important;
+                font-family: var(--serif) !important;
+                font-size: 1.6rem !important;
+                font-weight: 300 !important;
+                letter-spacing: -0.01em !important;
+                background: none !important;
+            }
+        }
+
+        /* ── PAGE HEADER ── */
+        .page-header {
+            padding: 0 var(--gutter);
+            padding-top: 9rem;
+            padding-bottom: 4rem;
+            max-width: var(--max);
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.1s forwards;
+        }
+
+        .breadcrumb a {
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--text);
+        }
+
+        .breadcrumb span {
+            color: var(--text-4);
+        }
+
+        .page-title {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.2s forwards;
+        }
+
+        .page-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            max-width: 600px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.3s forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── FILTER BAR ── */
+        .filter-bar {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 2rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-2);
+            background: transparent;
+            color: var(--text-3);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 400;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+
+        .project-count {
+            font-size: 0.8rem;
+            color: var(--text-3);
+            font-weight: 300;
+        }
+
+        .project-count strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: var(--section-v) var(--gutter);
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-3);
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            letter-spacing: -0.02em;
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+
+        /* ── PROJECTS GRID ── */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .project-featured {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: #0D1B3E;
+            padding: 3rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2px;
+        }
+
+        [data-theme="dark"] .project-featured {
+            background: #060E1F;
+        }
+
+        .project-featured::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(184, 146, 58, 0.08) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .project-featured:hover::before {
+            opacity: 1;
+        }
+
+        .project-featured:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.45);
+            font-weight: 400;
+        }
+
+        .tag.featured {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .project-title {
+            font-family: var(--serif);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: rgba(247, 245, 240, 0.96);
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: rgba(247, 245, 240, 0.58);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            max-width: 460px;
+        }
+
+        .project-quote {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: rgba(247, 245, 240, 0.45);
+            border-left: 2px solid var(--accent);
+            padding-left: 1rem;
+            margin-bottom: 1.75rem;
+            line-height: 1.6;
+            font-family: var(--serif);
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-val {
+            font-family: var(--serif);
+            font-size: 1.75rem;
+            color: rgba(247, 245, 240, 0.95);
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+
+        .metric-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(247, 245, 240, 0.38);
+        }
+
+        .project-visual {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 4px;
+            height: 300px;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-featured:hover .project-visual {
+            transform: scale(1.02);
+        }
+
+        .view-case-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.78rem;
+            color: rgba(247, 245, 240, 0.38);
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .view-case-link span {
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+
+        .project-featured:hover .view-case-link {
+            color: rgba(247, 245, 240, 0.65);
+            gap: 0.75rem;
+        }
+
+        .project-featured:hover .view-case-link span {
+            transform: translateX(3px);
+        }
+
+        .projects-secondary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .project-card {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--text);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .card-visual {
+            height: 200px;
+            overflow: hidden;
+            background: var(--bg-3);
+        }
+
+        .card-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .card-visual img {
+            transform: scale(1.04);
+        }
+
+        .card-content {
+            padding: 1.75rem 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card .tag {
+            border-color: var(--border-2);
+            color: var(--text-3);
+        }
+
+        .project-card .project-title {
+            font-size: 1.25rem;
+            color: var(--text);
+            margin-bottom: 0.6rem;
+        }
+
+        .project-card .project-desc {
+            color: var(--text-3);
+            font-size: 0.88rem;
+            margin-bottom: 0;
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .card-meta-item {
+            font-size: 0.7rem;
+            color: var(--text-4);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card-meta-item strong {
+            color: var(--text-2);
+            font-weight: 500;
+        }
+
+        .project-arrow {
+            font-size: 0.9rem;
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-3);
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .project-card:hover .project-arrow {
+            color: var(--bg);
+            background: var(--text);
+            transform: translate(2px, -2px);
+        }
+
+        @media (max-width: 900px) {
+            .project-featured {
+                grid-template-columns: 1fr;
+            }
+
+            .project-featured .project-visual {
+                height: 240px;
+                margin-top: 1.5rem;
+            }
+
+            .projects-secondary {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            text-align: center;
+            background: #0D1B3E;
+            max-width: 100%;
+            padding: clamp(4rem, 10vw, 8rem) var(--gutter);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .cta-section {
+            background: #060E1F;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(42, 63, 111, 0.6) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .cta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 1.25rem;
+        }
+
+        .cta-headline {
+            font-family: var(--serif);
+            font-size: clamp(2.25rem, 6vw, 4.5rem);
+            color: rgba(247, 245, 240, 0.96);
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+        }
+
+        .cta-headline em {
+            color: #E8654B;
+            font-style: italic;
+        }
+
+        .cta-sub {
+            font-size: 0.95rem;
+            color: rgba(197, 204, 222, 0.68);
+            max-width: 480px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(247, 245, 240, 0.96);
+            color: #0D1B3E;
+            padding: 0.85rem 1.75rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 3px;
+            letter-spacing: 0.03em;
+            border: 1px solid rgba(247, 245, 240, 0.96);
+            transition: all 0.25s ease;
+        }
+
+        .btn-light:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-outline-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: rgba(197, 204, 222, 0.82);
+            text-decoration: none;
+            padding: 0.85rem 1.75rem;
+            letter-spacing: 0.03em;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-light:hover {
+            color: rgba(247, 245, 240, 0.96);
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #162244;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 1.75rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        [data-theme="dark"] footer {
+            background: #0D1B3E;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            opacity: 0.45;
+            transition: opacity 0.2s;
+        }
+
+        .footer-logo:hover {
+            opacity: 0.78;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.38);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-d1 {
+            transition-delay: 0.08s;
+        }
+
+        .reveal-d2 {
+            transition-delay: 0.16s;
+        }
+
+        .reveal-d3 {
+            transition-delay: 0.24s;
+        }
+
+        .reveal-d4 {
+            transition-delay: 0.32s;
+        }
+
+        /* ── MOBILE EXTRAS ── */
+        @media (max-width: 600px) {
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-light,
+            .btn-outline-light {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress" id="progress"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Daya Raj Dhungana" />
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="all-work.html">Work</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" stroke-width="2" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                        stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <svg class="moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="nav-mobile" id="navMobile" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>All Work</span>
+        </div>
+        <h1 class="page-title">All projects.</h1>
+        <p class="page-subtitle">
+            A collection of shipped products, system redesigns, and problems worth solving. Each project represents real
+            constraints, real stakeholders, and real outcomes.
+        </p>
+    </header>
+
+    <div class="filter-bar">
+        <div class="filter-tags">
+            <button class="filter-tag active" data-filter="all">All</button>
+            <button class="filter-tag" data-filter="erp">ERP</button>
+            <button class="filter-tag" data-filter="b2b">B2B SaaS</button>
+            <button class="filter-tag" data-filter="mobile">Mobile</button>
+            <button class="filter-tag" data-filter="web">Web</button>
+            <button class="filter-tag" data-filter="dashboard">Dashboard</button>
+        </div>
+        <div class="project-count">
+            Showing <strong id="projectCount">3</strong> projects
+        </div>
+    </div>
+
+    <section>
+        <div class="projects-grid">
+            <!-- Featured Project 1 -->
+            <a href="providhy-case-study.html" class="project-featured reveal reveal-d1"
+                data-tags="erp,b2b,web,dashboard">
+                <div>
+                    <div class="project-tags">
+                        <span class="tag featured">Featured</span>
+                        <span class="tag">B2B SaaS</span>
+                        <span class="tag">ERP</span>
+                    </div>
+                    <h3 class="project-title">Providhy ERP: Platform Redesign</h3>
+                    <p class="project-desc">
+                        Redesigned a dense accounting ERP and its marketing website. By rethinking core workflows,
+                        a slow and complex system became an intuitive tool that speeds up daily operations.
+                    </p>
+                    <p class="project-quote">"The new system actually makes sense. My team stopped asking me for help
+                        with invoicing on day one." — Operations Manager, Providhy</p>
+                    <div class="project-metrics">
+                        <div>
+                            <div class="metric-val">42%</div>
+                            <div class="metric-label">Less task time</div>
+                        </div>
+                        <div>
+                            <div class="metric-val">&lt;10 sec</div>
+                            <div class="metric-label">Invoicing speed</div>
+                        </div>
+                        <div>
+                            <div class="metric-val">10k+</div>
+                            <div class="metric-label">Reports generated</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="project-visual">
+                        <img src="providhy-erp-preview.png" alt="Providhy ERP Dashboard" />
+                    </div>
+                    <div class="view-case-link">View case study <span>→</span></div>
+                </div>
+            </a>
+
+            <!-- Grid Projects -->
+            <div class="projects-secondary">
+                <a href="foodai-case-study.html" class="project-card reveal reveal-d2" data-tags="mobile">
+                    <div class="card-visual">
+                        <img src="food-ai-preview.jpg" alt="Food AI Mobile App" />
+                    </div>
+                    <div class="card-content">
+                        <div class="project-tags">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Health</span>
+                        </div>
+                        <h3 class="project-title">FoodAI: Nutrition Tracker</h3>
+                        <p class="project-desc">
+                            Turned a requested UI reskin into a complete UX overhaul. User testing revealed core
+                            tracking features buried in settings. I rebuilt the app into an intuitive daily logger
+                            around how people actually eat.
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span class="card-meta-item"><strong>4.2/5</strong> Usability</span>
+                                <span class="card-meta-item"><strong>18</strong> Tests</span>
+                            </div>
+                            <div class="project-arrow">↗</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="epl-case-study.html" class="project-card reveal reveal-d3" data-tags="web,dashboard">
+                    <div class="card-visual">
+                        <img src="epl-ramailo-preview.png" alt="EPL Ramailo Platform" />
+                    </div>
+                    <div class="card-content">
+                        <div class="project-tags">
+                            <span class="tag">Web</span>
+                            <span class="tag">Dashboard</span>
+                            <span class="tag">Sports</span>
+                        </div>
+                        <h3 class="project-title">EPL Ramailo Nepal</h3>
+                        <p class="project-desc">
+                            Architected a dual-sided fantasy sports platform. A high-engagement consumer UI for players
+                            alongside a data-dense admin dashboard for live scores, leagues, and user management.
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span class="card-meta-item"><strong>Dual-sided</strong> Platform</span>
+                                <span class="card-meta-item"><strong>Live</strong> Data UX</span>
+                            </div>
+                            <div class="project-arrow">↗</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- <a href="#" class="project-card reveal reveal-d4" data-tags="b2b,dashboard,web">
+                    <div class="card-visual">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                            alt="Analytics Dashboard" />
+                    </div>
+                    <div class="card-content">
+                        <div class="project-tags">
+                            <span class="tag">B2B</span>
+                            <span class="tag">Dashboard</span>
+                        </div>
+                        <h3 class="project-title">Business Intelligence Dashboard</h3>
+                        <p class="project-desc">
+                            Redesigned a legacy analytics platform used by 200+ enterprise clients. Simplified complex
+                            data visualization and reduced cognitive load without losing analytical depth.
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span class="card-meta-item"><strong>35%</strong> Faster insights</span>
+                                <span class="card-meta-item"><strong>200+</strong> Users</span>
+                            </div>
+                            <div class="project-arrow">↗</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card reveal reveal-d1" data-tags="mobile">
+                    <div class="card-visual">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"
+                            alt="Mobile Banking App" />
+                    </div>
+                    <div class="card-content">
+                        <div class="project-tags">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">Fintech</span>
+                        </div>
+                        <h3 class="project-title">Mobile Banking Experience</h3>
+                        <p class="project-desc">
+                            Conducted research with 50+ users to redesign transaction flows. Eliminated unnecessary
+                            steps and improved security perception through clearer visual feedback.
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span class="card-meta-item"><strong>50+</strong> Interviews</span>
+                                <span class="card-meta-item"><strong>4.7/5</strong> Rating</span>
+                            </div>
+                            <div class="project-arrow">↗</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card reveal reveal-d2" data-tags="erp,web,dashboard">
+                    <div class="card-visual">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+                            alt="Inventory Management" />
+                    </div>
+                    <div class="card-content">
+                        <div class="project-tags">
+                            <span class="tag">ERP</span>
+                            <span class="tag">Logistics</span>
+                        </div>
+                        <h3 class="project-title">Inventory Management System</h3>
+                        <p class="project-desc">
+                            Built information architecture for a multi-warehouse inventory system. Created a scalable
+                            design system that adapts to different user roles and permission levels.
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span class="card-meta-item"><strong>3</strong> User types</span>
+                                <span class="card-meta-item"><strong>System-wide</strong> DS</span>
+                            </div>
+                            <div class="project-arrow">↗</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card reveal reveal-d3" data-tags="web,b2b">
+                    <div class="card-visual">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                            alt="SaaS Platform" />
+                    </div>
+                    <div class="card-content">
+                        <div class="project-tags">
+                            <span class="tag">B2B SaaS</span>
+                            <span class="tag">Marketing</span>
+                        </div>
+                        <h3 class="project-title">Marketing Automation Platform</h3>
+                        <p class="project-desc">
+                            Redesigned onboarding and campaign builder for a marketing automation tool. Reduced
+                            time-to-first-campaign from 45 minutes to under 8 minutes through progressive disclosure.
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-meta">
+                                <span class="card-meta-item"><strong>82%</strong> Faster setup</span>
+                                <span class="card-meta-item"><strong>12</strong> Iterations</span>
+                            </div>
+                            <div class="project-arrow">↗</div>
+                        </div>
+                    </div>
+                </a> -->
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section" id="contact">
+        <div class="cta-inner">
+            <p class="cta-label">Let's talk</p>
+            <h2 class="cta-headline">Working on something<br><em>complex?</em></h2>
+            <p class="cta-sub">If you're building enterprise software, a B2B platform, or anything where the
+                complexity of the problem hasn't been matched by the quality of the design, I'd like to hear about it.
+            </p>
+            <div class="cta-actions">
+                <a href="mailto:dhunganadayaraj@gmail.com" class="btn-light">Get in touch ↗</a>
+                <a href="https://www.linkedin.com/in/dayaraj07514/" class="btn-outline-light" target="_blank"
+                    rel="noopener">LinkedIn →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="#" class="footer-logo">
+            <img src="favicon.png" alt="Daya Raj Dhungana" />
+        </a>
+        <ul class="footer-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://www.linkedin.com/in/dayaraj07514/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/dayaraj" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+        <span class="footer-copy">© brewed with strong ☕ + extra ❤️ + sprinkled 😴</span>
+    </footer>
+
+    <script>
+        // THEME
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const saved = localStorage.getItem('theme');
+        html.setAttribute('data-theme', saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+        themeToggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // MOBILE NAV
+        const navMobile = document.getElementById('navMobile');
+        const navLinks = document.getElementById('navLinks');
+
+        function openMenu() {
+            navLinks.classList.add('open');
+            navMobile.classList.add('open');
+            navMobile.setAttribute('aria-label', 'Close menu');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('open');
+            navMobile.classList.remove('open');
+            navMobile.setAttribute('aria-label', 'Open menu');
+            document.body.style.overflow = '';
+        }
+
+        navMobile.addEventListener('click', () => navLinks.classList.contains('open') ? closeMenu() : openMenu());
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+
+        // SCROLL PROGRESS + NAV SCROLL STATE
+        const progress = document.getElementById('progress');
+        const nav = document.getElementById('nav');
+
+        function updateProgress() {
+            const s = window.scrollY;
+            const d = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.transform = `scaleX(${d > 0 ? s / d : 0})`;
+        }
+
+        function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 50); }
+
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => { updateProgress(); updateNav(); });
+        }, { passive: true });
+
+        updateProgress(); updateNav();
+
+        // SCROLL REVEAL
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), i * 60);
+                    revealObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // FILTER FUNCTIONALITY
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const projects = document.querySelectorAll('.project-featured, .project-card');
+        const projectCount = document.getElementById('projectCount');
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Update active state
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+
+                const filter = tag.dataset.filter;
+                let visibleCount = 0;
+
+                projects.forEach(project => {
+                    if (filter === 'all') {
+                        project.style.display = '';
+                        visibleCount++;
+                    } else {
+                        const tags = project.dataset.tags || '';
+                        if (tags.includes(filter)) {
+                            project.style.display = '';
+                            visibleCount++;
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    }
+                });
+
+                projectCount.textContent = visibleCount;
+            });
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const t = document.querySelector(href);
+                if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>

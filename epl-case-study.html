@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPL Ramailo Nepal Case Study · Daya Raj Dhungana</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root,
+        [data-theme="light"] {
+            --bg: #F7F5F0;
+            --bg-2: #EFECE5;
+            --bg-3: #E4DFD6;
+            --bg-4: #D5D0C6;
+            --text: #0D1B3E;
+            --text-2: #3A4565;
+            --text-3: #6B7490;
+            --text-4: #9BA3B8;
+            --navy-light: #E8EDF7;
+            --navy-muted: rgba(13, 27, 62, 0.06);
+            --accent: #C04A32;
+            --border: #E4DFD6;
+            --border-2: #D5D0C6;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+            --max: 1120px;
+            --text-max: 720px;
+            --gutter: clamp(1.5rem, 5vw, 4rem);
+            --ern-purple: #667eea;
+            --ern-dark-purple: #764ba2;
+            --ern-gold: #ffc107;
+            --ern-green: #28a745;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0F1626;
+            --bg-2: #162035;
+            --bg-3: #1E2B46;
+            --bg-4: #283A5C;
+            --text: #EEF0F6;
+            --text-2: #C5CCDE;
+            --text-3: #8B97B5;
+            --text-4: #5C6785;
+            --navy-light: #1E2B46;
+            --navy-muted: rgba(238, 240, 246, 0.06);
+            --accent: #E8654B;
+            --border: #1E2B46;
+            --border-2: #283A5C;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::selection {
+            background: var(--navy-light);
+            color: var(--text);
+        }
+
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ern-purple), var(--ern-dark-purple));
+            z-index: 1001;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0.9rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: color-mix(in srgb, var(--bg) 93%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .nav.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 56px;
+            width: auto;
+            transition: filter 0.3s;
+        }
+
+        [data-theme="dark"] .nav-logo img {
+            filter: invert(1) brightness(1.1);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            position: relative;
+            z-index: 60;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-3);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            font-size: 0.78rem !important;
+            font-weight: 500 !important;
+            color: var(--text) !important;
+            border: 1px solid var(--border-2) !important;
+            padding: 0.48rem 1.15rem !important;
+            border-radius: 2px !important;
+            transition: all 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--text) !important;
+            color: var(--bg) !important;
+            border-color: var(--text) !important;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-2);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background: var(--navy-muted);
+            border-color: var(--text-3);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            color: var(--text-2);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(20deg);
+        }
+
+        [data-theme="light"] .theme-toggle .moon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun {
+            display: none;
+        }
+
+        .nav-mobile {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            gap: 5.5px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-mobile span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-mobile.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-mobile.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .nav-mobile.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-mobile {
+                display: flex;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 74px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg);
+                padding: 2rem var(--gutter) 3rem;
+                gap: 0;
+                z-index: 50;
+                justify-content: flex-start;
+                overflow-y: auto;
+            }
+
+            .nav-links.open li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open li:first-child {
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-links.open a {
+                font-size: 1.6rem;
+                font-weight: 300;
+                color: var(--text-2);
+                padding: 1rem 0;
+                display: block;
+                font-family: var(--serif);
+                letter-spacing: -0.01em;
+                text-decoration: none;
+            }
+
+            .nav-links.open .nav-cta {
+                border: none !important;
+                padding: 1rem 0 !important;
+                border-radius: 0 !important;
+                color: var(--accent) !important;
+                font-family: var(--serif) !important;
+                font-size: 1.6rem !important;
+                font-weight: 300 !important;
+                background: none !important;
+            }
+        }
+
+        /* ── CASE STUDY LAYOUT ── */
+        .cs-header {
+            padding: 10rem var(--gutter) 5rem;
+            max-width: var(--max);
+            margin: 0 auto;
+        }
+
+        .cs-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-3);
+            margin-bottom: 2rem;
+        }
+
+        .cs-breadcrumb a {
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cs-breadcrumb a:hover {
+            color: var(--text);
+        }
+
+        .cs-eyebrow {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ern-purple);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .cs-title {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.02;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .cs-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            max-width: 680px;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .cs-meta {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cs-meta-item {
+            padding: 1.5rem 0;
+            border-right: 1px solid var(--border);
+            padding-right: 1.5rem;
+            margin-right: 1.5rem;
+        }
+
+        .cs-meta-item:last-child {
+            border-right: none;
+        }
+
+        .cs-meta-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-4);
+            margin-bottom: 0.5rem;
+        }
+
+        .cs-meta-val {
+            font-size: 0.88rem;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        @media(max-width:900px) {
+            .cs-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cs-meta-item {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 1.25rem 0;
+            }
+        }
+
+        @media(max-width:500px) {
+            .cs-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-hero-visual {
+            max-width: var(--max);
+            margin: 0 auto 6rem;
+            padding: 0 var(--gutter);
+        }
+
+        .cs-hero-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
+        .cs-body {
+            max-width: var(--text-max);
+            margin: 0 auto;
+            padding: 0 var(--gutter) 5rem;
+        }
+
+        .cs-section-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-4);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cs-section-label::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--text-4);
+        }
+
+        .cs-section-title {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+            color: var(--text);
+            margin-bottom: 1.75rem;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .cs-body p {
+            font-size: 1rem;
+            color: var(--text-2);
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .cs-body strong {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .cs-body h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin: 2.5rem 0 0.75rem;
+        }
+
+        .cs-body ul {
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+            list-style: none;
+            color: var(--text-2);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.85;
+        }
+
+        .cs-body ul li {
+            padding: 0.35rem 0 0.35rem 1.5rem;
+            position: relative;
+        }
+
+        /* Changed from '—' to a small square dot — no hyphens in content */
+        .cs-body ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 5px;
+            height: 5px;
+            border-radius: 1px;
+            background: var(--ern-purple);
+            opacity: 0.7;
+        }
+
+        .cs-divider {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+            border-top: 1px solid var(--border);
+        }
+
+        .cs-quote {
+            margin: 3rem 0;
+            padding: 2rem 2rem 2rem 2.5rem;
+            background: var(--bg-2);
+            border-left: 3px solid var(--ern-purple);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .cs-quote blockquote {
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            color: var(--text);
+            line-height: 1.5;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .cs-quote cite {
+            font-size: 0.78rem;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-style: normal;
+        }
+
+        .cs-callout {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            border: 1px solid var(--border-2);
+            background: var(--navy-light);
+            border-radius: 4px;
+        }
+
+        [data-theme="dark"] .cs-callout {
+            background: var(--bg-3);
+        }
+
+        .cs-callout-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ern-purple);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .cs-callout p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .cs-img-full {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .cs-img-full img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            display: block;
+            background: var(--bg-2);
+        }
+
+        .cs-img-caption {
+            font-size: 0.82rem;
+            color: var(--text-3);
+            margin-top: 1rem;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .cs-before-after {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .cs-before-after-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .ba-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .ba-tag {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.3rem 0.85rem;
+            border-radius: 2px;
+            width: max-content;
+            font-weight: 500;
+        }
+
+        .ba-tag.before {
+            background: rgba(192, 74, 50, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(192, 74, 50, 0.2);
+        }
+
+        .ba-tag.after {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--ern-purple);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .ba-item img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            display: block;
+            background: var(--bg-2);
+        }
+
+        .ba-item p {
+            font-size: 0.8rem;
+            color: var(--text-3);
+            line-height: 1.5;
+        }
+
+        @media(max-width:700px) {
+            .ba-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-challenges {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .challenge-card {
+            padding: 1.75rem;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            border-top: 3px solid var(--ern-purple);
+        }
+
+        .challenge-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .challenge-desc {
+            font-size: 0.82rem;
+            color: var(--text-3);
+            line-height: 1.65;
+        }
+
+        @media(max-width:700px) {
+            .challenge-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-screens {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .screen-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .screen-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            display: block;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .screen-label {
+            font-size: 0.72rem;
+            color: var(--text-3);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .screen-desc {
+            font-size: 0.82rem;
+            color: var(--text-3);
+            line-height: 1.5;
+        }
+
+        @media(max-width:700px) {
+            .screens-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-ecosystem {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .eco-card {
+            padding: 1.5rem;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .eco-card:hover {
+            background: var(--navy-light);
+            border-color: var(--border-2);
+            transform: translateY(-2px);
+        }
+
+        .eco-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .eco-title {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .eco-desc {
+            font-size: 0.78rem;
+            color: var(--text-3);
+            line-height: 1.5;
+        }
+
+        @media(max-width:900px) {
+            .ecosystem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .ecosystem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-social {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .social-post img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .social-post img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        @media(max-width:900px) {
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .cs-dual {
+            max-width: var(--max);
+            margin: 0 auto 5rem;
+            padding: 0 var(--gutter);
+        }
+
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dual-side {
+            background: var(--bg);
+            padding: 2.5rem;
+        }
+
+        .dual-side.dark-side {
+            background: #1a0a2e;
+        }
+
+        .dual-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.75rem;
+            border-radius: 2px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .dual-tag.consumer {
+            background: rgba(102, 126, 234, 0.15);
+            color: var(--ern-purple);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .dual-tag.admin {
+            background: rgba(255, 193, 7, 0.15);
+            color: var(--ern-gold);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .dual-title {
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .dual-side.dark-side .dual-title {
+            color: #fff;
+        }
+
+        .dual-desc {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+        }
+
+        .dual-side.dark-side .dual-desc {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .dual-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dual-features li {
+            font-size: 0.82rem;
+            color: var(--text-2);
+            padding: 0.35rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dual-side.dark-side .dual-features li {
+            color: rgba(255, 255, 255, 0.65);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .dual-features li::before {
+            content: '→';
+            color: var(--ern-purple);
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        @media(max-width:700px) {
+            .dual-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-impact {
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b69 50%, #1a0a2e 100%);
+            padding: 5rem var(--gutter);
+        }
+
+        .cs-impact-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+        }
+
+        .cs-impact-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .impact-val {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .impact-val em {
+            color: var(--ern-gold);
+            font-style: normal;
+        }
+
+        .impact-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+        }
+
+        @media(max-width:900px) {
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-next {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 6rem var(--gutter);
+        }
+
+        .cs-next-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+        }
+
+        .cs-next-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s;
+            letter-spacing: -0.02em;
+        }
+
+        .cs-next-title:hover {
+            color: var(--accent);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-2);
+            text-decoration: none;
+            padding: 0.85rem 1.75rem;
+            letter-spacing: 0.03em;
+            border: 1px solid var(--border-2);
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            color: var(--text);
+            border-color: var(--text);
+            background: var(--navy-muted);
+        }
+
+        footer {
+            background: #162244;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 1.75rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        [data-theme="dark"] footer {
+            background: #0D1B3E;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            opacity: 0.45;
+            transition: opacity 0.2s;
+        }
+
+        .footer-logo:hover {
+            opacity: 0.78;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.38);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress" id="progress"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Daya Raj Dhungana" />
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="all-work.html">Work</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" stroke-width="2" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                        stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <svg class="moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="nav-mobile" id="navMobile" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="cs-header reveal">
+        <div class="cs-breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="all-work.html">Work</a>
+            <span>/</span>
+            <span>EPL Ramailo Nepal</span>
+        </div>
+        <p class="cs-eyebrow">Web Platform · Sports · Community · Dashboard</p>
+        <h1 class="cs-title">EPL Ramailo Nepal:<br>Building Nepal's largest<br><em
+                style="font-style:italic; color:var(--ern-purple);">fantasy football ecosystem.</em></h1>
+        <p class="cs-subtitle">Designing a complete dual sided platform from scratch, a public facing community hub and
+            a real time member dashboard, for Nepal's biggest Fantasy Premier League community. Moving 1,500 members
+            off Facebook Groups and into a structured, prize backed league system.</p>
+        <div class="cs-meta">
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">My Role</div>
+                <div class="cs-meta-val">Lead Product Designer</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Deliverables</div>
+                <div class="cs-meta-val">Website, Dashboard &amp; Marketing</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Platform</div>
+                <div class="cs-meta-val">Web (Desktop &amp; Mobile)</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Community</div>
+                <div class="cs-meta-val">1,500+ Active Members</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Prize Pool</div>
+                <div class="cs-meta-val">NPR 8,00,000+</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="cs-hero-visual reveal">
+        <img src="ern-dashboard-hero.png" alt="EPL Ramailo Nepal Dashboard"
+            onerror="this.src='https://placehold.co/1200x700/1a0a2e/667eea?text=ERN+Dashboard'">
+    </div>
+
+    <!-- SECTION 1: CONTEXT -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">01 Context</p>
+        <h2 class="cs-section-title">Nepal's biggest FPL community was running on Facebook Groups.</h2>
+        <p>EPL Ramailo Nepal has been Nepal's largest Fantasy Premier League community since 2017. It organises local
+            leagues with real cash prizes, hosts events, and has built a genuinely passionate football fanbase across
+            the country. At its peak, over 250 active members were competing for prize pools exceeding NPR 8,00,000.</p>
+        <p>But the entire operation ran through <strong>Facebook Groups, WhatsApp messages, and manual
+                spreadsheets.</strong> There was no registration system, no live standings, no member dashboard, and no
+            way for a new user to find the community, understand what it offered, and join without already knowing
+            someone inside.</p>
+        <p>The community had outgrown its infrastructure. It needed a real platform.</p>
+    </div>
+
+    <div class="cs-challenges reveal">
+        <div class="challenge-grid">
+            <div class="challenge-card">
+                <div class="challenge-icon">📋</div>
+                <div class="challenge-title">No formal registration system</div>
+                <div class="challenge-desc">New members had to message admins directly on Facebook or WhatsApp. There
+                    was no self serve signup, no payment verification, and no member database. Managing 1550 members
+                    manually was not sustainable.</div>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-icon">📊</div>
+                <div class="challenge-title">No live standings or dashboard</div>
+                <div class="challenge-desc">League standings were shared as screenshots or manual posts. Members had no
+                    real time view of their rank, points, team value, or elimination status. Engagement dropped between
+                    gameweeks because there was nothing to check.</div>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-icon">🔍</div>
+                <div class="challenge-title">No discoverability</div>
+                <div class="challenge-desc">If you didn't already know about ERN through a friend, you couldn't find it.
+                    No website, no SEO presence, no landing page explaining what the community offered, what the prize
+                    structure was, or how to join.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-body reveal">
+        <div class="cs-callout">
+            <div class="cs-callout-label">The design challenge</div>
+            <p>Design a <strong>complete platform from scratch</strong>: a public facing website that explains the
+                community and converts visitors into members, plus a private member dashboard that keeps engaged members
+                coming back every gameweek. Two completely different user contexts. One design system.</p>
+        </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- SECTION 2: DESIGN STRATEGY -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">02 Design Strategy</p>
+        <h2 class="cs-section-title">One platform. Two completely different jobs.</h2>
+        <p>The core architectural decision was recognising that ERN needed to serve two fundamentally different user
+            contexts. Trying to merge them would have made both worse. I designed them as distinct surfaces sharing the
+            same brand identity.</p>
+    </div>
+
+    <div class="cs-dual reveal">
+        <div class="dual-grid">
+            <div class="dual-side">
+                <span class="dual-tag consumer">Public Website</span>
+                <h3 class="dual-title">Convert visitors into members</h3>
+                <p class="dual-desc">The public site serves first time visitors who've heard of ERN but don't know how
+                    to join. Its job is to explain, excite, and convert.</p>
+                <ul class="dual-features">
+                    <li>Hero section with clear value proposition</li>
+                    <li>League structure explained (Classic, Elimination, Captain's)</li>
+                    <li>Prize pool prominently displayed</li>
+                    <li>Events calendar and past events</li>
+                    <li>Registration check and new member signup</li>
+                    <li>Membership plans comparison</li>
+                    <li>ERN Show blog and content hub</li>
+                    <li>Merch shop integration</li>
+                    <li>Public standings (read only)</li>
+                </ul>
+            </div>
+            <div class="dual-side dark-side">
+                <span class="dual-tag admin">Member Dashboard</span>
+                <h3 class="dual-title">Keep members engaged all season</h3>
+                <p class="dual-desc">The dashboard serves registered members who are already in the league and need
+                    weekly touchpoints to stay engaged, informed, and competitive.</p>
+                <ul class="dual-features">
+                    <li>Real time GW countdown timer</li>
+                    <li>Personal rank (Overall, GW, ERN League)</li>
+                    <li>Total points and week on week change</li>
+                    <li>Team value and chip status</li>
+                    <li>Classic League vs Elimination League status</li>
+                    <li>Points vs league average chart</li>
+                    <li>Quick links (ERN Show, Events, Shop)</li>
+                    <li>Membership status and PAF contribution</li>
+                    <li>Top fixture display</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- SECTION 3: PUBLIC WEBSITE -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">03 Public Website</p>
+        <h2 class="cs-section-title">From no online presence to a full community hub.</h2>
+        <p>The public website had one specific job: take a visitor who knows nothing about ERN and make them want to
+            join. That meant leading with the most compelling information (prize pool, community size, events) and
+            making the path to membership as frictionless as possible.</p>
+        <p>The site architecture covers the full user journey from first landing to registration, with distinct pages
+            for Home, Standings, Blog, Shop, Events, and a dedicated Registration and Verification page.</p>
+    </div>
+
+    <div class="cs-screens reveal">
+        <div class="screens-grid">
+            <div class="screen-card">
+                <span class="screen-label">Homepage</span>
+                <img src="ern-website-home.png" alt="ERN Website Homepage"
+                    onerror="this.src='https://placehold.co/800x600/1a0a2e/667eea?text=ERN+Homepage'">
+                <p class="screen-desc">Hero with a clear league description, a community photo section, league overview,
+                    and a direct call to action to join.</p>
+            </div>
+            <div class="screen-card">
+                <span class="screen-label">Standings Page</span>
+                <img src="ern-website-standings.png" alt="ERN Standings Page"
+                    onerror="this.src='https://placehold.co/800x600/1a0a2e/667eea?text=ERN+Standings'">
+                <p class="screen-desc">Live Classic League table with rank, team name, manager, and points. Weekly GW
+                    winners with photos and prize confirmation shown below.</p>
+            </div>
+            <div class="screen-card">
+                <span class="screen-label">Blog and ERN Show</span>
+                <img src="ern-website-blog.png" alt="ERN Blog Page"
+                    onerror="this.src='https://placehold.co/800x600/1a0a2e/667eea?text=ERN+Blog'">
+                <p class="screen-desc">Content hub for weekly FPL tips, ERN Show episodes, and community news. Keeps
+                    non members engaged and drives return visits.</p>
+            </div>
+            <div class="screen-card">
+                <span class="screen-label">Merch Shop</span>
+                <img src="ern-website-shop.png" alt="ERN Shop"
+                    onerror="this.src='https://placehold.co/800x600/1a0a2e/667eea?text=ERN+Shop'">
+                <p class="screen-desc">ERN branded merchandise (jerseys, caps, scarves) with gender and category
+                    filters. Revenue supports the Players Assistance Fund.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-body reveal">
+        <h3>The registration system: replacing manual admin work</h3>
+        <p>Before this platform, admins manually verified every new member over Facebook and WhatsApp. I designed a
+            two part registration page: a <strong>registration check tool</strong> (search by name to verify existing
+            membership) and a <strong>new registration form</strong> (Full Name, Phone, Team Name, Manager Name, FPL ID,
+            then Proceed to Payment).</p>
+        <p>This single page replaced hours of admin messaging per season and gave members a self serve verification flow
+            they could use at any time without waiting for a reply.</p>
+    </div>
+
+    <div class="cs-img-full reveal">
+        <img src="ern-registration.png" alt="ERN Registration Page"
+            onerror="this.src='https://placehold.co/1120x700/f7f5f0/1a0a2e?text=ERN+Registration+Page'">
+        <p class="cs-img-caption">Dual purpose registration page: check existing membership status by name (top section)
+            and new member registration form with FPL ID verification (bottom section). Accordion layout keeps it clean
+            and unintimidating.</p>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- SECTION 4: DASHBOARD -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">04 Member Dashboard</p>
+        <h2 class="cs-section-title">A command centre for every gameweek.</h2>
+        <p>The dashboard's primary job is to answer the question every FPL manager asks on Friday: <em>"Where do I stand
+                and what do I need to know before the deadline?"</em></p>
+        <p>I designed the information hierarchy around the weekly FPL rhythm. The most urgent information (GW countdown,
+            current rank, points) sits at the top. Contextual information (league status, chip availability) sits in the
+            middle. Supporting information (quick links, membership) sits at the bottom.</p>
+    </div>
+
+    <div class="cs-img-full reveal">
+        <img src="ern-dashboard-full.png" alt="ERN Dashboard Full View"
+            onerror="this.src='https://placehold.co/1120x800/1a0a2e/667eea?text=ERN+Dashboard+Full'">
+        <p class="cs-img-caption">The ERN Dashboard: personalised greeting, GW countdown with deadline status, rank and
+            points and value stat cards, ERN League status (Classic and Elimination), points chart, quick links,
+            membership status.</p>
+    </div>
+
+    <div class="cs-body reveal">
+        <h3>Key dashboard design decisions</h3>
+        <ul>
+            <li><strong>GW countdown with chip indicators.</strong> Wildcard, Free Hit, Bench Boost, and Triple Captain
+                status shown alongside the countdown. These are the two pieces of information FPL managers always check
+                together, so they live together.</li>
+            <li><strong>Dual league status cards.</strong> Classic League rank (#12 of 1,650) and Elimination League
+                survival status ("Survived 19 of 20 GWs") visible in the same view. Members in both leagues never have
+                to navigate between them.</li>
+            <li><strong>Points vs league average chart.</strong> A visual line chart showing personal points trajectory
+                against the ERN average. Makes improvement or decline immediately visible without reading a table of
+                numbers.</li>
+            <li><strong>Quick links with contextual badges.</strong> ERN Show Ep. 20 tagged "New," Futsal Cup RSVP
+                tagged "Hot," ERN Shop showing "25% OFF." Not just static links, each one carries a reason to click.
+            </li>
+            <li><strong>Top fixture display.</strong> Shows the most important upcoming fixture for the user's team. One
+                of the most checked pieces of FPL information, surfaced without any navigation.</li>
+        </ul>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- SECTION 5: ECOSYSTEM -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">05 Full Ecosystem</p>
+        <h2 class="cs-section-title">A platform, not just a website.</h2>
+        <p>ERN is more than an online league. It has physical events, merchandise, original content, and a community
+            support fund. The design system had to accommodate all of these touchpoints consistently, while keeping each
+            one distinct enough to serve its specific purpose.</p>
+    </div>
+
+    <div class="cs-ecosystem reveal">
+        <div class="ecosystem-grid">
+            <div class="eco-card">
+                <div class="eco-icon">🏆</div>
+                <div class="eco-title">League System</div>
+                <div class="eco-desc">Classic League, Elimination League, and Captain's Challenge each with separate
+                    standings, rules, and prize pools.</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-icon">🎟️</div>
+                <div class="eco-title">Events</div>
+                <div class="eco-desc">Kickoff Party, Futsal Tournaments, Watch Parties, Season Gala — all with RSVP
+                    integrated into the platform.</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-icon">📺</div>
+                <div class="eco-title">ERN Show</div>
+                <div class="eco-desc">Weekly video content with FPL tips, transfer suggestions, and community updates
+                    embedded in the blog section.</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-icon">🛍️</div>
+                <div class="eco-title">ERN Shop</div>
+                <div class="eco-desc">Official merchandise store with jerseys, caps, and scarves. Revenue supports
+                    community operations and the PAF.</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-icon">🤝</div>
+                <div class="eco-title">Players Assistance Fund</div>
+                <div class="eco-desc">Community driven support system. Members contribute during registration.
+                    Contribution is tracked in the dashboard under membership status.</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-icon">📊</div>
+                <div class="eco-title">Live Standings</div>
+                <div class="eco-desc">Real time league tables updated after every gameweek, replacing manual screenshot
+                    updates shared in Facebook Groups.</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-icon">✅</div>
+                <div class="eco-title">Member Verification</div>
+                <div class="eco-desc">Self serve registration check and new member signup, replacing manual admin
+                    verification over WhatsApp.</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-icon">🎫</div>
+                <div class="eco-title">Membership Tiers</div>
+                <div class="eco-desc">Premium (NPR 1,500) vs Basic: with a clear benefits comparison covering
+                    Elimination League access, event priority, and merchandise discounts.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- SECTION 6: SOCIAL MEDIA -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">06 Social Media and Brand</p>
+        <h2 class="cs-section-title">Beyond the website, a consistent brand across every touchpoint.</h2>
+        <p>In addition to the platform, I designed all social media content for ERN's Instagram and Facebook presence.
+            This included season launch announcements, registration campaigns, gameweek winner posts, membership drive
+            graphics, and event promotions.</p>
+        <p>The social content needed to <strong>feel like a professional sports brand</strong> while keeping the
+            community warmth that made ERN popular in the first place. Dynamic layouts, gradient backgrounds, player
+            imagery, and bold typography consistent with the website's brand identity but adapted for social formats.
+        </p>
+    </div>
+
+    <div class="cs-social reveal">
+        <div class="social-grid">
+            <div class="social-post"><img src="ern-social-1.png" alt="ERN Season Announcement"
+                    onerror="this.src='https://placehold.co/300x300/1a0a2e/667eea?text=Social+1'"></div>
+            <div class="social-post"><img src="ern-social-2.png" alt="ERN Prize Pool Post"
+                    onerror="this.src='https://placehold.co/300x300/764ba2/ffffff?text=Social+2'"></div>
+            <div class="social-post"><img src="ern-social-3.png" alt="ERN Registration Closing"
+                    onerror="this.src='https://placehold.co/300x300/1a0a2e/ffc107?text=Social+3'"></div>
+            <div class="social-post"><img src="ern-social-4.png" alt="ERN League Winners"
+                    onerror="this.src='https://placehold.co/300x300/667eea/ffffff?text=Social+4'"></div>
+            <div class="social-post"><img src="ern-social-5.png" alt="ERN Membership"
+                    onerror="this.src='https://placehold.co/300x300/764ba2/ffc107?text=Social+5'"></div>
+            <div class="social-post"><img src="ern-social-6.png" alt="ERN Membership Benefits"
+                    onerror="this.src='https://placehold.co/300x300/1a0a2e/667eea?text=Social+6'"></div>
+            <div class="social-post"><img src="ern-social-7.png" alt="ERN Membership Confirmed"
+                    onerror="this.src='https://placehold.co/300x300/28a745/ffffff?text=Social+7'"></div>
+            <div class="social-post"><img src="ern-social-8.png" alt="ERN Survival League"
+                    onerror="this.src='https://placehold.co/300x300/764ba2/ffc107?text=Social+8'"></div>
+            <div class="social-post"><img src="ern-social-9.png" alt="ERN How to Join"
+                    onerror="this.src='https://placehold.co/300x300/1a0a2e/667eea?text=Social+9'"></div>
+            <div class="social-post"><img src="ern-social-10.png" alt="ERN Membership Details"
+                    onerror="this.src='https://placehold.co/300x300/667eea/ffffff?text=Social+10'"></div>
+        </div>
+        <p class="cs-img-caption" style="margin-top:1.5rem;">A sample of the Instagram content designed for ERN, season
+            announcements, membership campaigns, winner reveals, registration drives, and Survival League promotions.
+        </p>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- SECTION 7: REFLECTION -->
+    <div class="cs-body reveal">
+        <p class="cs-section-label">07 Reflection</p>
+        <h2 class="cs-section-title">What this project taught me about designing for communities.</h2>
+
+        <h3>Communities have two audiences, insiders and outsiders</h3>
+        <p>The hardest design problem on this project was recognising that ERN's existing members and potential new
+            members needed <strong>completely different information hierarchies.</strong> Existing members wanted to
+            check their rank and get on with their day. Newcomers needed to understand what ERN was, why it was worth
+            joining, and how to do it. Treating them the same would have produced a platform that served neither group
+            well.</p>
+
+        <h3>Moving from informal to formal changes the culture</h3>
+        <p>One thing I had to be careful about was designing a platform that felt <strong>official without feeling
+                corporate.</strong> ERN's appeal is its community energy — the banter, the local events, the feeling of
+            being Nepal's FPL community. I used the brand's purple and gold palette, kept copy warm and direct, and made
+            sure the social media content maintained that personality even as the underlying systems became more
+            professional.</p>
+
+        <h3>Designing at scale means designing the repeatable system</h3>
+        <p>Social media content for an active sports community means designing 20 or more posts per season, each on a
+            deadline, each needing to feel fresh. The most valuable decision I made was establishing a <strong>visual
+                language early</strong> consistent gradient backgrounds, typography hierarchy, logo placement rules,
+            and content framing so that each post could be produced quickly without losing brand cohesion.</p>
+
+        <div class="cs-quote">
+            <blockquote>"This wasn't just a website project. It was infrastructure for a community and communities are
+                messy, living things that don't stay still while you design for them."</blockquote>
+            <cite>Reflection on EPL Ramailo Nepal</cite>
+        </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div class="cs-impact reveal">
+        <div class="cs-impact-inner">
+            <p class="cs-impact-label">08 Outcomes and Scale</p>
+            <div class="impact-grid">
+                <div class="impact-metric">
+                    <div class="impact-val">1,550<em>+</em></div>
+                    <div class="impact-desc">Active members competing in the organised league system, up from informal
+                        Facebook Group management</div>
+                </div>
+                <div class="impact-metric">
+                    <div class="impact-val">NPR <em>8L+</em></div>
+                    <div class="impact-desc">Total prize pool managed through the platform across Classic, Elimination,
+                        and Gameweek prizes</div>
+                </div>
+                <div class="impact-metric">
+                    <div class="impact-val">2<em>×</em></div>
+                    <div class="impact-desc">Dual sided platform designed from zero to live: public website and private
+                        member dashboard</div>
+                </div>
+                <div class="impact-metric">
+                    <div class="impact-val">0<em>→∞</em></div>
+                    <div class="impact-desc">Registration, standings, and member verification all moved from manual
+                        WhatsApp admin work to a self serve platform</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEXT PROJECT -->
+    <div class="cs-next reveal">
+        <div class="cs-next-label">Back to work</div>
+        <a href="providhy-case-study.html" class="cs-next-title">← Providhy ERP</a>
+        <br>
+        <a href="all-work.html" class="btn-outline">View all work</a>
+    </div>
+
+    <footer>
+        <a href="#" class="footer-logo">
+            <img src="favicon.png" alt="Daya Raj Dhungana" />
+        </a>
+        <ul class="footer-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://www.linkedin.com/in/dayaraj07514/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/dayaraj" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+        <span class="footer-copy">© brewed with strong ☕ + extra ❤️ + sprinkled 😴</span>
+    </footer>
+
+    <script>
+        // THEME
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        html.setAttribute('data-theme', saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        themeToggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // MOBILE NAV
+        const navMobile = document.getElementById('navMobile');
+        const navLinks = document.getElementById('navLinks');
+        function openMenu() { navLinks.classList.add('open'); navMobile.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { navLinks.classList.remove('open'); navMobile.classList.remove('open'); document.body.style.overflow = ''; }
+        navMobile.addEventListener('click', () => navLinks.classList.contains('open') ? closeMenu() : openMenu());
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+
+        // PROGRESS + NAV
+        const progress = document.getElementById('progress');
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => {
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+                const s = window.scrollY;
+                const d = document.documentElement.scrollHeight - window.innerHeight;
+                progress.style.transform = `scaleX(${d > 0 ? s / d : 0})`;
+            });
+        }, { passive: true });
+
+        // SCROLL REVEAL
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), i * 50);
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+
+</html>
