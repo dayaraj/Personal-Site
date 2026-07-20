@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="How I redesigned Nepal's first cloud ERP — reducing invoice creation from 3 minutes to 40 seconds, cutting navigation support tickets by 60%, and driving 3× subscription growth. A full product design case study by Daya Raj Dhungana.">
-    <title>Providhy ERP Case Study · Daya Raj Dhungana</title>
+        content="How I redesigned Nepal's first cloud ERP: invoice creation cut from 3 minutes to 40 seconds, cutting navigation support tickets by 60%, and driving 3× subscription growth. A full product design case study by Daya Raj Dhungana.">
+    <title>Providhy ERP Redesign · UX Case Study · Daya Raj Dhungana, Product Designer Germany</title>
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -521,7 +521,7 @@
         }
 
         .cs-body ul li::before {
-            content: '—';
+            content: '·';
             position: absolute;
             left: 0;
             color: var(--accent);
@@ -1346,7 +1346,7 @@
 
     <!-- ── SECTION 1: CONTEXT ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">01 — Context</p>
+        <p class="cs-section-label">01 · Context</p>
         <h2 class="cs-section-title">ERP was a four letter word in Nepal.</h2>
         <p>In Nepal, enterprise software like Tally is seen as a necessary evil. Businesses pay for multi day training
             sessions just to create a basic invoice. Desktop first tools dominate, but mobile phone adoption is
@@ -1365,21 +1365,21 @@
             <div class="ba-item">
                 <span class="ba-tag before">Before</span>
                 <img src="old-master-dashboard.png" alt="Old Master Dashboard with module cards"
-                    onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Old+Master+Dashboard'">
+                    onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Old+Master+Dashboard'" loading="lazy" decoding="async">
                 <p>The "Master" served as a confusing portal. Users had to click a module card and then navigate to a
                     completely separate sidebar context.</p>
             </div>
             <div class="ba-item">
                 <span class="ba-tag before">Before</span>
                 <img src="old-sales-invoice.png" alt="Old Sales Invoice Form"
-                    onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Old+Invoice+Form'">
+                    onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Old+Invoice+Form'" loading="lazy" decoding="async">
                 <p>Invoice forms had scattered fields, a massive description box pushing totals off screen, and multiple
                     separate action buttons with unclear hierarchy.</p>
             </div>
             <div class="ba-item">
                 <span class="ba-tag before">Before</span>
                 <img src="old-reports.png" alt="Old Reports wall of text"
-                    onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Old+Reports+Page'">
+                    onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Old+Reports+Page'" loading="lazy" decoding="async">
                 <p>Reports was a wall of 25+ plain text links across 6 columns with no visual hierarchy. Users had to
                     read every item to find what they needed.</p>
             </div>
@@ -1390,7 +1390,7 @@
 
     <!-- ── SECTION 2: RESEARCH ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">02 — Discovery & Research</p>
+        <p class="cs-section-label">02 · Discovery & Research</p>
         <h2 class="cs-section-title">I learned accounting before I opened Figma.</h2>
         <p>I had no prior accounting background. Rather than jumping straight into interface design, I spent the first
             weeks learning how businesses actually operate, how sales flow into purchase, how inventory connects to
@@ -1444,7 +1444,7 @@
     <!-- Survey Screenshot -->
     <div class="cs-img-full reveal">
         <img src="merchant-survey.png" alt="Merchant Survey Responses spreadsheet"
-            onerror="this.src='https://placehold.co/1120x500/efece5/3a4565?text=Merchant+Survey+Responses'">
+            onerror="this.src='https://placehold.co/1120x500/efece5/3a4565?text=Merchant+Survey+Responses'" loading="lazy" decoding="async">
         <p class="cs-img-caption">Raw merchant survey data. Real business owners told us how they record sales, manage
             rush hours, track payments, and handle inventory challenges.</p>
     </div>
@@ -1529,7 +1529,7 @@
     <div>
         <!-- ── SECTION: USER PERSONAS ── -->
         <div class="cs-body reveal">
-            <p class="cs-section-label">02b — User Personas</p>
+            <p class="cs-section-label">02b · User Personas</p>
             <h2 class="cs-section-title">Who we were designing for.</h2>
             <p>After research synthesis, I created personas in Miro to align the team around the real users, not
                 assumed ones. The primary persona, Ram Hari, represented the business owner archetype we encountered
@@ -1540,7 +1540,7 @@
         <!-- Persona Miro Screenshot -->
         <div class="cs-img-full reveal">
             <img src="user-persona-miro.png" alt="User Persona - Ram Hari created in Miro"
-                onerror="this.src='https://placehold.co/1120x650/1a1a2e/ffffff?text=User+Persona+Miro+Board'">
+                onerror="this.src='https://placehold.co/1120x650/1a1a2e/ffffff?text=User+Persona+Miro+Board'" loading="lazy" decoding="async">
             <p class="cs-img-caption">User persona created in Miro during the discovery phase. Ram Hari represents the
                 primary user archetype, a business owner and distributor who wants full visibility but has low
                 technology confidence.</p>
@@ -1612,7 +1612,7 @@
 
     <!-- ── SECTION 3: DESIGN DECISIONS ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">03 — Design Decisions</p>
+        <p class="cs-section-label">03 · Design Decisions</p>
         <h2 class="cs-section-title">Five decisions that changed the system.</h2>
         <p>With research complete, I mapped out the existing information architecture and identified five structural
             problems that no amount of visual polish could fix. Each required a deliberate architectural decision.</p>
@@ -1620,7 +1620,7 @@
 
     <!-- Decision 1: Navigation -->
     <div class="cs-body reveal">
-        <h3>Decision 1 — Navigation architecture</h3>
+        <h3>Decision 1: Navigation architecture</h3>
         <p>The old system had a fatal flaw: "Master" was a portal hub, not a workspace. Every module (Inventory, Sales,
             Purchase, Accounting) had its own completely separate navigation context. Switching modules meant starting
             over mentally.</p>
@@ -1645,14 +1645,14 @@
             <div class="ba-item">
                 <span class="ba-tag before">Before: Disconnected Modules</span>
                 <img src="old-master-dashboard.png" alt="Old navigation"
-                    onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Old+Navigation'">
+                    onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Old+Navigation'" loading="lazy" decoding="async">
                 <p>Master acted as a hub. Each module had independent navigation. Switching modules meant starting from
                     scratch, losing context and momentum.</p>
             </div>
             <div class="ba-item">
                 <span class="ba-tag after">After: Unified Navigation System</span>
                 <img src="new-erp-dashboard.png" alt="New navigation"
-                    onerror="this.src='https://placehold.co/800x500/0D1B3E/ffffff?text=New+Navigation'">
+                    onerror="this.src='https://placehold.co/800x500/0D1B3E/ffffff?text=New+Navigation'" loading="lazy" decoding="async">
                 <p>Persistent sidebar for module context. Top tabs for sub section switching. The global "+ Create"
                     button provides quick entry from anywhere in the system.</p>
             </div>
@@ -1661,7 +1661,7 @@
 
     <!-- Decision 2: Dashboard -->
     <div class="cs-body reveal">
-        <h3>Decision 2 — Dashboard as command center</h3>
+        <h3>Decision 2: Dashboard as command center</h3>
         <p>The old dashboard was a module launcher with an approval queue. It answered the question "where do I go?" but
             not "how is my business doing?"</p>
         <p>Based on the merchant survey, the top business anxieties were: cash flow, overdue receivables, and pending
@@ -1672,7 +1672,7 @@
     <!-- Annotated Dashboard -->
     <div class="cs-annotated reveal">
         <img src="new-erp-dashboard.png" alt="Annotated new dashboard"
-            onerror="this.src='https://placehold.co/1120x700/0D1B3E/ffffff?text=New+Dashboard+Annotated'">
+            onerror="this.src='https://placehold.co/1120x700/0D1B3E/ffffff?text=New+Dashboard+Annotated'" loading="lazy" decoding="async">
         <div class="annotation-list">
             <div class="annotation-item">
                 <div class="annotation-num">1</div>
@@ -1727,7 +1727,7 @@
 
     <!-- Decision 3: Invoice -->
     <div class="cs-body reveal">
-        <h3>Decision 3 — Invoice form redesign</h3>
+        <h3>Decision 3: Invoice form redesign</h3>
         <p>The invoice form was users' most frequent pain point. In the old design, a massive description text area
             pushed financial totals below the fold. Users scrolled constantly and lost their place. The action buttons
             (Save as Draft / Post Bill) competed with no clear visual hierarchy.</p>
@@ -1736,7 +1736,7 @@
             visible in the right panel regardless of line item count.</p>
 
         <div class="cs-callout">
-            <div class="cs-callout-label">Usability test failure — and the fix</div>
+            <div class="cs-callout-label">Usability test failure, and the fix</div>
             <p>In Round 1 testing, users who selected products on line items were <strong>confused by the "available
                     stock" indicator,</strong> they thought it was mandatory to verify stock before adding. We made it
                 <strong>contextual and optional</strong>: shown on hover, not on focus. The confusion disappeared
@@ -1751,14 +1751,14 @@
             <div class="ba-item">
                 <span class="ba-tag before">Before</span>
                 <img src="old-purchase-invoice.png" alt="Old Purchase Invoice"
-                    onerror="this.src='https://placehold.co/800x550/efece5/3a4565?text=Old+Purchase+Invoice'">
+                    onerror="this.src='https://placehold.co/800x550/efece5/3a4565?text=Old+Purchase+Invoice'" loading="lazy" decoding="async">
                 <p>Fields scattered across full width. Massive description box. Totals pushed to bottom-right. Quick
                     Payment as an afterthought toggle at the very bottom.</p>
             </div>
             <div class="ba-item">
                 <span class="ba-tag after">After</span>
                 <img src="new-purchase-invoice.png" alt="New Purchase Invoice"
-                    onerror="this.src='https://placehold.co/800x550/0D1B3E/ffffff?text=New+Purchase+Invoice'">
+                    onerror="this.src='https://placehold.co/800x550/0D1B3E/ffffff?text=New+Purchase+Invoice'" loading="lazy" decoding="async">
                 <p>Grouped header fields. Clean line items table with Amount visible. Totals panel always visible. Top
                     module tabs for context. Quick Payment and Additional Cost as clear feature toggles.</p>
             </div>
@@ -1767,12 +1767,12 @@
 
     <!-- Decision 4: Reports -->
     <div class="cs-body reveal">
-        <h3>Decision 4 — Reports from wall of text to structured hub</h3>
+        <h3>Decision 4: Reports from wall of text to structured hub</h3>
         <p>The old reports page was arguably the biggest usability failure in the system. 25+ report names in 5 columns
             of plain text. No icons, no categories, no hierarchy. Users had to read every single item to find what they
             needed.</p>
         <p>The redesign introduced clear category groupings with icons, consistent layout, and a <strong>search
-                bar</strong> — a deliberate decision for power users who know the report name but don't want to scan the
+                bar</strong>, a deliberate decision for power users who know the report name but don't want to scan the
             full list.</p>
     </div>
 
@@ -1782,14 +1782,14 @@
             <div class="ba-item">
                 <span class="ba-tag before">Before</span>
                 <img src="old-reports.png" alt="Old reports wall of text"
-                    onerror="this.src='https://placehold.co/800x550/efece5/3a4565?text=Old+Reports+Page'">
+                    onerror="this.src='https://placehold.co/800x550/efece5/3a4565?text=Old+Reports+Page'" loading="lazy" decoding="async">
                 <p>Five columns of unstyled text links. No icons, no grouping hierarchy, no search. A 30 second scanning
                     task every time.</p>
             </div>
             <div class="ba-item">
                 <span class="ba-tag after">After</span>
                 <img src="new-reports.png" alt="New reports page"
-                    onerror="this.src='https://placehold.co/800x550/0D1B3E/ffffff?text=New+Reports+Page'">
+                    onerror="this.src='https://placehold.co/800x550/0D1B3E/ffffff?text=New+Reports+Page'" loading="lazy" decoding="async">
                 <p>Categorized sections with icons (Inventory, Purchase, Sales, Accounting, Tax Reports). Search bar for
                     power users. Clean card layout. Favorites support via ☆ bookmark.</p>
             </div>
@@ -1798,7 +1798,7 @@
 
     <!-- Decision 5: Bulk Upload -->
     <div class="cs-body reveal">
-        <h3>Decision 5 — Bulk upload as a first class feature</h3>
+        <h3>Decision 5: Bulk upload as a first class feature</h3>
         <p>Adding 50 inventory items one by one was causing user churn before launch. Bulk upload wasn't a "nice to
             have," it was the deciding factor for whether a business could even start using the system.</p>
         <p>I owned the end to end flow design: defining the required data format, the template generator, the 3 step
@@ -1810,7 +1810,7 @@
 
     <div class="cs-img-full reveal">
         <img src="bulk-upload-flow.png" alt="Bulk Upload 3-step flow"
-            onerror="this.src='https://placehold.co/1120x600/efece5/3a4565?text=Bulk+Upload+Flow'">
+            onerror="this.src='https://placehold.co/1120x600/efece5/3a4565?text=Bulk+Upload+Flow'" loading="lazy" decoding="async">
         <p class="cs-img-caption">3 step bulk upload flow: Upload File → Summary & Edit (review & fix errors) → Import.
             Step indicator keeps users oriented. Download template link is always visible on Step 1.</p>
     </div>
@@ -1819,7 +1819,7 @@
 
     <!-- ── SECTION 4: SETTINGS ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">04 — Settings Redesign</p>
+        <p class="cs-section-label">04 · Settings Redesign</p>
         <h2 class="cs-section-title">From buried config tabs to a clear card system.</h2>
         <p>The old Configuration Settings page buried critical options (user permissions, billing, numbering systems) in
             tabs inside a single page. The new Settings hub uses a card grid pattern, each card has a title, icon, and
@@ -1828,9 +1828,9 @@
 
     <div class="cs-img-full reveal">
         <img src="new-settings.png" alt="New Settings card grid"
-            onerror="this.src='https://placehold.co/1120x600/efece5/3a4565?text=New+Settings+Hub'">
+            onerror="this.src='https://placehold.co/1120x600/efece5/3a4565?text=New+Settings+Hub'" loading="lazy" decoding="async">
         <p class="cs-img-caption">Account Settings hub: General Settings, Billing & Plans, Transaction Numbering, User
-            Activities, Notifications, Users & Permissions, Company Info, Party Management — all accessible at a glance.
+            Activities, Notifications, Users & Permissions, Company Info, Party Management, all accessible at a glance.
         </p>
     </div>
 
@@ -1838,7 +1838,7 @@
 
     <!-- ── SECTION 5: CDXE MODULE ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">05 — CDXE Module</p>
+        <p class="cs-section-label">05 · CDXE Module</p>
         <h2 class="cs-section-title">Designing a distributor connection network.</h2>
         <p>Beyond the core ERP, I also mapped the user flow for CDXE, which is a distributor management system module
             that
@@ -1851,7 +1851,7 @@
 
     <div class="cs-flow reveal">
         <img src="cdxe-flow.png" alt="CDXE Module User Flow Diagram"
-            onerror="this.src='https://placehold.co/1120x500/FFEB3B/333333?text=CDXE+Flow+Diagram'">
+            onerror="this.src='https://placehold.co/1120x500/FFEB3B/333333?text=CDXE+Flow+Diagram'" loading="lazy" decoding="async">
         <p class="cs-img-caption"
             style="text-align:center; margin-top:1rem; font-size:0.82rem; color:var(--text-3); font-style:italic;">CDXE
             module flow: User authorization → DMS connection → Accept/Reject → Active connection branches into report
@@ -1862,7 +1862,7 @@
 
     <!-- ── SECTION 6: DESIGN SYSTEM ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">06 — Design System</p>
+        <p class="cs-section-label">06 · Design System</p>
         <h2 class="cs-section-title">Components that became the company standard.</h2>
         <p>As the sole designer working across Inventory, Sales, Purchase, and Accounting modules, consistency was
             critical. I built a component library in Figma covering the core patterns used across every module, table
@@ -1873,7 +1873,7 @@
 
     <div class="cs-system reveal">
         <img src="design-system-components.png" alt="Design System Components"
-            onerror="this.src='https://placehold.co/1120x500/efece5/3a4565?text=Design+System+Components'">
+            onerror="this.src='https://placehold.co/1120x500/efece5/3a4565?text=Design+System+Components'" loading="lazy" decoding="async">
         <p class="cs-img-caption"
             style="text-align:center; margin-top:1rem; font-size:0.82rem; color:var(--text-3); font-style:italic;">Core
             component library: Column table, Row detail states (Active/Edit/View), Line Item input, Single table,
@@ -1884,7 +1884,7 @@
 
     <!-- ── SECTION 7: VAT REPORT ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">07 — Localization</p>
+        <p class="cs-section-label">07 · Localization</p>
         <h2 class="cs-section-title">Built for Nepali business, not adapted from elsewhere.</h2>
         <p>One of the strongest design decisions was committing to deep localization, not just translating labels, but
             designing around Nepali fiscal reality. The VAT Summary Report uses Nepali fiscal month names (Shrawan,
@@ -1897,7 +1897,7 @@
 
     <div class="cs-img-full reveal">
         <img src="vat-summary-report.png" alt="VAT Summary Report with Nepali fiscal calendar"
-            onerror="this.src='https://placehold.co/1120x650/efece5/3a4565?text=VAT+Summary+Report'">
+            onerror="this.src='https://placehold.co/1120x650/efece5/3a4565?text=VAT+Summary+Report'" loading="lazy" decoding="async">
         <p class="cs-img-caption">VAT Summary Report: Nepali fiscal months as column headers, IRD standard terminology
             in Nepali, fiscal year selector, and multi column layout matching the government tax filing format.</p>
     </div>
@@ -1907,7 +1907,7 @@
     <!-- ── SECTION 8: IMPACT ── -->
     <div class="cs-impact reveal">
         <div class="cs-impact-inner">
-            <p class="cs-impact-label">08 — Outcomes & Impact</p>
+            <p class="cs-impact-label">08 · Outcomes & Impact</p>
             <div class="impact-grid">
                 <div class="impact-metric">
                     <div class="impact-val">40<em>s</em></div>
@@ -1937,17 +1937,17 @@
             <div class="testimonial">
                 <blockquote>"Finally, an ERP that doesn't make me feel stupid. My team figured it out without any
                     training."</blockquote>
-                <cite>— Business Owner, Kathmandu</cite>
+                <cite>Business Owner, Kathmandu</cite>
             </div>
             <div class="testimonial">
                 <blockquote>"I don't have to call support for navigation anymore. Actions that took 3 minutes now take
                     40 seconds."</blockquote>
-                <cite>— Operations Manager, Post Launch</cite>
+                <cite>Operations Manager, Post Launch</cite>
             </div>
             <div class="testimonial">
                 <blockquote>"The reports section actually makes sense now. I used to avoid it. Now I check it every
                     morning."</blockquote>
-                <cite>— Accountant, Providhy User</cite>
+                <cite>Accountant, Providhy User</cite>
             </div>
         </div>
     </div>
@@ -1956,7 +1956,7 @@
 
     <!-- ── SECTION 9: REFLECTION ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">09 — Reflection</p>
+        <p class="cs-section-label">09 · Reflection</p>
         <h2 class="cs-section-title">What I'd do differently.</h2>
 
         <h3>Design for keyboard users from day one</h3>
@@ -1982,13 +1982,13 @@
         <div class="cs-quote">
             <blockquote>"One design decision can change the way a whole business operates. That's the weight of
                 enterprise UX and why I take it seriously."</blockquote>
-            <cite>— Personal reflection on this project</cite>
+            <cite>Personal reflection on this project</cite>
         </div>
     </div>
 
     <!-- ── SECTION 10: WEBSITE REDESIGN ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">10 — Website Redesign</p>
+        <p class="cs-section-label">10 · Website Redesign</p>
         <h2 class="cs-section-title">Fixing the front door while rebuilding the house.</h2>
         <p>While redesigning the core ERP product, a critical problem emerged: the marketing website wasn't converting
             visitors into trial signups. The product was getting better, but the acquisition funnel was broken. Bounce
@@ -2070,14 +2070,14 @@
             <div class="ba-item">
                 <span class="ba-tag before">Before</span>
                 <img src="old-website-home.png" alt="Old Providhy homepage"
-                    onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Old+Homepage'">
+                    onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Old+Homepage'" loading="lazy" decoding="async">
                 <p>Feature first messaging. No trust signals. Weak visual hierarchy. CTA buried below the fold. Generic
                     stock imagery.</p>
             </div>
             <div class="ba-item">
                 <span class="ba-tag after">After (Design Complete, In Development)</span>
                 <img src="new-website-home.png" alt="Redesigned Providhy homepage"
-                    onerror="this.src='https://placehold.co/800x500/0D1B3E/ffffff?text=New+Homepage'">
+                    onerror="this.src='https://placehold.co/800x500/0D1B3E/ffffff?text=New+Homepage'" loading="lazy" decoding="async">
                 <p>Benefit driven hero. Social proof above fold (customer logos + testimonial). Clear CTA hierarchy.
                     Product screenshot showing real dashboard. Trust badges (secure, cloud, mobile ready).</p>
             </div>
@@ -2091,14 +2091,14 @@
             <div class="ba-item">
                 <span class="ba-tag before">Before</span>
                 <img src="old-website-pricing.png" alt="Old Providhy pricing page"
-                    onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Old+Pricing'">
+                    onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Old+Pricing'" loading="lazy" decoding="async">
                 <p>Confusing tier structure. No differentiation between plans. Payment required for trial. No FAQ or
                     objection handling.</p>
             </div>
             <div class="ba-item">
                 <span class="ba-tag after">After (Design Complete, In Development)</span>
                 <img src="new-website-pricing.png" alt="Redesigned Providhy pricing page"
-                    onerror="this.src='https://placehold.co/800x500/0D1B3E/ffffff?text=New+Pricing'">
+                    onerror="this.src='https://placehold.co/800x500/0D1B3E/ffffff?text=New+Pricing'" loading="lazy" decoding="async">
                 <p>Clear comparison grid. "Most Popular" badge guides decision. Annual/monthly toggle with savings
                     highlight. FAQ section answers sales objections. Trial signup no longer requires payment.</p>
             </div>
@@ -2110,21 +2110,21 @@
         <div class="cs-img-card">
             <div class="cs-img-card-label">INVENTORY MODULE PAGE</div>
             <img src="website-inventory-module.png" alt="Inventory module landing page"
-                onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Inventory+Module+Page'">
+                onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Inventory+Module+Page'" loading="lazy" decoding="async">
             <p>Dedicated page with module specific value prop, features, screenshots, and customer use case. Designed
                 for SEO targeting.</p>
         </div>
         <div class="cs-img-card">
             <div class="cs-img-card-label">SALES MODULE PAGE</div>
             <img src="website-sales-module.png" alt="Sales module landing page"
-                onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Sales+Module+Page'">
+                onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Sales+Module+Page'" loading="lazy" decoding="async">
             <p>Highlights invoicing, quotations, payment tracking. Includes "See how it works" video walkthrough and
                 testimonial from a retail business.</p>
         </div>
         <div class="cs-img-card">
             <div class="cs-img-card-label">ACCOUNTING MODULE PAGE</div>
             <img src="website-accounting-module.png" alt="Accounting module landing page"
-                onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Accounting+Module+Page'">
+                onerror="this.src='https://placehold.co/700x450/efece5/3a4565?text=Accounting+Module+Page'" loading="lazy" decoding="async">
             <p>Emphasizes Nepali tax compliance (VAT, TDS), IRD integration, and localized fiscal year support.
                 Addresses accountant specific concerns.</p>
         </div>
@@ -2135,14 +2135,14 @@
         <div class="cs-img-card">
             <div class="cs-img-card-label">CONTACT PAGE</div>
             <img src="website-contact.png" alt="Contact page redesign"
-                onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Contact+Page'">
+                onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Contact+Page'" loading="lazy" decoding="async">
             <p>Contextual contact options: Book Demo, Get Support, Partnerships. Live chat widget. Expected response
                 time transparency.</p>
         </div>
         <div class="cs-img-card">
             <div class="cs-img-card-label">BLOG HUB</div>
             <img src="website-blog.png" alt="Blog content hub"
-                onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Blog+Hub'">
+                onerror="this.src='https://placehold.co/800x500/efece5/3a4565?text=Blog+Hub'" loading="lazy" decoding="async">
             <p>Category filtering (Product Updates, Accounting Tips, Business Growth). Featured articles. Search bar.
                 Designed for thought leadership + SEO.</p>
         </div>
@@ -2150,7 +2150,7 @@
 
     <div class="cs-img-full reveal">
         <img src="website-documentation.png" alt="Documentation and Tutorials page"
-            onerror="this.src='https://placehold.co/1120x600/efece5/3a4565?text=Documentation+Hub'">
+            onerror="this.src='https://placehold.co/1120x600/efece5/3a4565?text=Documentation+Hub'" loading="lazy" decoding="async">
         <p class="cs-img-caption">Documentation & Tutorials hub: Searchable help articles, video walkthroughs,
             step by step setup guides. Designed to reduce onboarding support tickets and improve self serve product
             activation.</p>
@@ -2188,7 +2188,7 @@
 
     <footer>
         <a href="#" class="footer-logo">
-            <img src="favicon.png" alt="Daya Raj Dhungana" />
+            <img src="favicon.png" alt="Daya Raj Dhungana" loading="lazy" decoding="async" />
         </a>
         <ul class="footer-links">
             <li><a href="#work">Work</a></li>
@@ -2242,6 +2242,8 @@
         }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
+    <script src="assets/js/i18n-de-providhy.js"></script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

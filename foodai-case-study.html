@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A requested font change became a complete UX overhaul. How I rebuilt FoodAI's nutrition tracker from scratch — adding onboarding, fixing navigation, and achieving a 4.2/5 usability score. Case study by Daya Raj Dhungana.">
-    <title>FoodAI Case Study · Daya Raj Dhungana</title>
+    <meta name="description" content="A requested font change became a complete UX overhaul. How I rebuilt FoodAI's nutrition tracker from scratch, adding onboarding, fixing navigation, and achieving a 4.2/5 usability score. Case study by Daya Raj Dhungana.">
+    <title>FoodAI Nutrition App · UX Case Study · Daya Raj Dhungana, Product Designer Germany</title>
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -507,7 +507,7 @@
         }
 
         .cs-body ul li::before {
-            content: '—';
+            content: '·';
             position: absolute;
             left: 0;
             color: var(--foodai-teal);
@@ -1158,12 +1158,12 @@
     <!-- HERO: Full screens showcase -->
     <div class="cs-hero-visual reveal">
         <img src="foodai-all-screens.png" alt="FoodAI Redesigned Mobile Screens"
-            onerror="this.src='food-ai-preview.jpg'">
+            onerror="this.src='food-ai-preview.jpg'" loading="lazy" decoding="async">
     </div>
 
     <!-- ── SECTION 1: CONTEXT ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">01 — Context</p>
+        <p class="cs-section-label">01 · Context</p>
         <h2 class="cs-section-title">A reskin request that became a full redesign.</h2>
         <p>FoodAI is a mobile app that uses AI to scan meals and break down their nutritional content like protein,
             carbs,
@@ -1178,7 +1178,7 @@
 
     <!-- ── SECTION 2: PROBLEMS ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">02 — Problems Identified</p>
+        <p class="cs-section-label">02 · Problems Identified</p>
         <h2 class="cs-section-title">Three structural problems, not visual ones.</h2>
         <p>Before touching Figma, I audited the existing app across navigation, user flow, and information hierarchy.
             What I found wasn't a styling problem. It was a product problem.</p>
@@ -1212,19 +1212,19 @@
 
     <!-- Before screens -->
     <div class="cs-before-after reveal">
-        <p class="cs-before-after-title">The original app — before redesign</p>
+        <p class="cs-before-after-title">The original app before the redesign</p>
         <div class="ba-grid">
             <div class="ba-item">
-                <span class="ba-tag before">Before — Login</span>
+                <span class="ba-tag before">Before · Login</span>
                 <img src="foodai-old-login.png" alt="Old FoodAI Login Screen"
-                    onerror="this.src='https://placehold.co/600x700/f0f0f0/666666?text=Old+Login+Screen'">
+                    onerror="this.src='https://placehold.co/600x700/f0f0f0/666666?text=Old+Login+Screen'" loading="lazy" decoding="async">
                 <p>Social login only. No brand personality, no value proposition. Users had no idea what they were
                     signing into or why they should.</p>
             </div>
             <div class="ba-item">
-                <span class="ba-tag before">Before — Home</span>
+                <span class="ba-tag before">Before · Home</span>
                 <img src="foodai-old-home.png" alt="Old FoodAI Home Screen"
-                    onerror="this.src='https://placehold.co/600x700/f0f0f0/666666?text=Old+Home+Screen'">
+                    onerror="this.src='https://placehold.co/600x700/f0f0f0/666666?text=Old+Home+Screen'" loading="lazy" decoding="async">
                 <p>Dropped immediately into a camera prompt. No nutritional context, no daily progress, no reason to
                     come back tomorrow.</p>
             </div>
@@ -1235,7 +1235,7 @@
 
     <!-- ── SECTION 3: PROCESS ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">03 — Research & Process</p>
+        <p class="cs-section-label">03 · Research & Process</p>
         <h2 class="cs-section-title">Research first. Wireframes second. Pixels last.</h2>
         <p>I gathered feedback from potential users across three areas: usability, visual clarity, and navigation flow.
             The finding that kept coming up: <strong>users wanted nutrition tracking to feel like a daily habit, not a
@@ -1260,7 +1260,7 @@
 
     <!-- ── SECTION 4: DESIGN SYSTEM ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">04 — Design System</p>
+        <p class="cs-section-label">04 · Design System</p>
         <h2 class="cs-section-title">Building the foundation before building screens.</h2>
         <p>Before a single screen was designed, I built a complete design system in Figma. Not because it was in the
             brief, but because building without one produces inconsistency that compounds with every new screen. The
@@ -1271,13 +1271,13 @@
         <div class="ds-grid">
             <div class="ds-card">
                 <img src="foodai-typography.png" alt="FoodAI Typography System"
-                    onerror="this.src='https://placehold.co/700x400/ffffff/2C3968?text=Typography+System'">
+                    onerror="this.src='https://placehold.co/700x400/ffffff/2C3968?text=Typography+System'" loading="lazy" decoding="async">
                 <div class="ds-card-label">Typography: Roboto for headings, Quicksand for body copy. Clear, modern, and
                     built to stay readable on small screens across all lighting conditions.</div>
             </div>
             <div class="ds-card">
                 <img src="foodai-colors.png" alt="FoodAI Color Palette"
-                    onerror="this.src='https://placehold.co/700x400/ffffff/2C3968?text=Color+Palette'">
+                    onerror="this.src='https://placehold.co/700x400/ffffff/2C3968?text=Color+Palette'" loading="lazy" decoding="async">
                 <div class="ds-card-label">Color system: Teal (#4DE0A3) as primary, Blue (#0AA7FF) as accent, Ford Blue
                     (#2C3968) for dark surfaces, with gradient ranges built specifically for nutrition chart
                     visualisations.</div>
@@ -1287,9 +1287,9 @@
 
     <div class="cs-img-full reveal">
         <img src="foodai-components.png" alt="FoodAI UI Components"
-            onerror="this.src='https://placehold.co/1120x600/f8f8f8/2C3968?text=UI+Component+Library'">
+            onerror="this.src='https://placehold.co/1120x600/f8f8f8/2C3968?text=UI+Component+Library'" loading="lazy" decoding="async">
         <p class="cs-img-caption">UI component library: button variants, form inputs, tab navigation states, nutrition
-            macro cards, calorie donut charts, and bar chart visualisations — all standardised before a single screen
+            macro cards, calorie donut charts, and bar chart visualisations, all standardised before a single screen
             was designed.</p>
     </div>
 
@@ -1297,7 +1297,7 @@
 
     <!-- ── SECTION 5: ONBOARDING ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">05 — Onboarding Redesign</p>
+        <p class="cs-section-label">05 · Onboarding Redesign</p>
         <h2 class="cs-section-title">From zero context to a guided first time experience.</h2>
         <p>The original app had no onboarding. Users hit a login screen and then immediately a camera. No explanation of
             what the app did, no goal setup, nothing that made it feel like it was built for them.</p>
@@ -1312,7 +1312,7 @@
 
     <div class="cs-img-full reveal">
         <img src="foodai-onboarding-flow.png" alt="FoodAI Onboarding Flow Screens"
-            onerror="this.src='https://placehold.co/1120x700/2C3968/4DE0A3?text=Onboarding+Flow+Screens'">
+            onerror="this.src='https://placehold.co/1120x700/2C3968/4DE0A3?text=Onboarding+Flow+Screens'" loading="lazy" decoding="async">
         <p class="cs-img-caption">New onboarding flow: feature walkthrough (4 slides) → login or signup → set daily
             nutrition goal → home. Users arrive at the home screen with context and a personal target already in place.
         </p>
@@ -1322,7 +1322,7 @@
 
     <!-- ── SECTION 6: FINAL SCREENS ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">06 — Final Design</p>
+        <p class="cs-section-label">06 · Final Design</p>
         <h2 class="cs-section-title">A complete daily nutrition companion.</h2>
         <p>The redesigned app covers every touchpoint in the nutrition tracking journey, from first open to daily habit.
             Each screen was designed around how users actually interact with food tracking: quickly, in context,
@@ -1333,42 +1333,42 @@
         <div class="mobile-grid">
             <div class="mobile-screen">
                 <img src="foodai-screen-home.png" alt="FoodAI Home Screen"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Home'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Home'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">Home</span>
             </div>
             <div class="mobile-screen">
                 <img src="foodai-screen-history.png" alt="FoodAI History Screen"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=History'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=History'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">History</span>
             </div>
             <div class="mobile-screen">
                 <img src="foodai-screen-capture.png" alt="FoodAI Capture Screen"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Capture'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Capture'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">Capture</span>
             </div>
             <div class="mobile-screen">
                 <img src="foodai-screen-report.png" alt="FoodAI Report Screen"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Report'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Report'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">Report</span>
             </div>
             <div class="mobile-screen">
                 <img src="foodai-screen-settings.png" alt="FoodAI Settings Screen"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Settings'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Settings'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">Settings</span>
             </div>
             <div class="mobile-screen">
                 <img src="foodai-screen-scan-result.png" alt="FoodAI Scan Result"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Scan+Result'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Scan+Result'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">Scan Result</span>
             </div>
             <div class="mobile-screen">
                 <img src="foodai-screen-food-detail.png" alt="FoodAI Food Detail"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Food+Detail'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Food+Detail'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">Food Detail</span>
             </div>
             <div class="mobile-screen">
                 <img src="foodai-screen-goal-setup.png" alt="FoodAI Nutrition Goal"
-                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Goal+Setup'">
+                    onerror="this.src='https://placehold.co/300x600/2C3968/4DE0A3?text=Goal+Setup'" loading="lazy" decoding="async">
                 <span class="mobile-screen-label">Nutrition Goal</span>
             </div>
         </div>
@@ -1378,7 +1378,7 @@
 
     <!-- ── SECTION 7: TESTING ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">07 — Testing & Iterations</p>
+        <p class="cs-section-label">07 · Testing & Iterations</p>
         <h2 class="cs-section-title">Two changes that came directly from users, not assumptions.</h2>
         <p>After completing the initial redesign, I ran usability testing with a sample group. Each participant was
             asked to do three things: sign in and set up their profile, capture a food image, and review their nutrition
@@ -1390,7 +1390,7 @@
 
         <div class="iteration-item">
             <div class="iteration-content">
-                <span class="iteration-tag">Iteration 01 — Navigation</span>
+                <span class="iteration-tag">Iteration 01 · Navigation</span>
                 <h3 class="iteration-title">Nutrition tracking moved out of Settings.</h3>
                 <div class="iteration-before">
                     <span class="iteration-before-label">Before</span>
@@ -1407,13 +1407,13 @@
             </div>
             <div class="iteration-visual">
                 <img src="foodai-iteration-nutrition.png" alt="Nutrition tracking iteration"
-                    onerror="this.src='https://placehold.co/600x800/f8f8f8/2C3968?text=Nutrition+Tracking+Iteration'">
+                    onerror="this.src='https://placehold.co/600x800/f8f8f8/2C3968?text=Nutrition+Tracking+Iteration'" loading="lazy" decoding="async">
             </div>
         </div>
 
         <div class="iteration-item">
             <div class="iteration-content">
-                <span class="iteration-tag">Iteration 02 — Interaction</span>
+                <span class="iteration-tag">Iteration 02 · Interaction</span>
                 <h3 class="iteration-title">Added "I ate this!" to separate intent from browsing.</h3>
                 <div class="iteration-before">
                     <span class="iteration-before-label">Before</span>
@@ -1430,7 +1430,7 @@
             </div>
             <div class="iteration-visual">
                 <img src="foodai-iteration-iate.png" alt="I ate this button iteration"
-                    onerror="this.src='https://placehold.co/600x800/f8f8f8/2C3968?text=I+Ate+This+Iteration'">
+                    onerror="this.src='https://placehold.co/600x800/f8f8f8/2C3968?text=I+Ate+This+Iteration'" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -1439,15 +1439,15 @@
         <p class="cs-before-after-title">Scan result screen: before and after</p>
         <div class="ba-grid">
             <div class="ba-item">
-                <span class="ba-tag before">Before — No logging action</span>
+                <span class="ba-tag before">Before · No logging action</span>
                 <img src="foodai-scan-before.png" alt="Scan result before"
-                    onerror="this.src='https://placehold.co/500x700/f0f0f0/666666?text=Before+Scan+Result'">
+                    onerror="this.src='https://placehold.co/500x700/f0f0f0/666666?text=Before+Scan+Result'" loading="lazy" decoding="async">
                 <p>Nutritional info shown, no action to log it. Users were passive viewers with no clear next step.</p>
             </div>
             <div class="ba-item">
-                <span class="ba-tag after">After — "I ate this!" action</span>
+                <span class="ba-tag after">After · "I ate this!" action</span>
                 <img src="foodai-scan-after.png" alt="Scan result after"
-                    onerror="this.src='https://placehold.co/500x700/2C3968/4DE0A3?text=After+Scan+Result'">
+                    onerror="this.src='https://placehold.co/500x700/2C3968/4DE0A3?text=After+Scan+Result'" loading="lazy" decoding="async">
                 <p>A clear, prominent logging action. Scan to browse, tap to track. Two different intentions, two
                     different actions.</p>
             </div>
@@ -1459,7 +1459,7 @@
     <!-- ── IMPACT ── -->
     <div class="cs-impact reveal">
         <div class="cs-impact-inner">
-            <p class="cs-impact-label">08 — Outcomes</p>
+            <p class="cs-impact-label">08 · Outcomes</p>
             <div class="impact-grid">
                 <div class="impact-metric">
                     <div class="impact-val">4.2<em>/5</em></div>
@@ -1488,7 +1488,7 @@
 
     <!-- ── SECTION 9: REFLECTION ── -->
     <div class="cs-body reveal">
-        <p class="cs-section-label">09 — Reflection</p>
+        <p class="cs-section-label">09 · Reflection</p>
         <h2 class="cs-section-title">What this project actually taught me.</h2>
 
         <h3>Always audit before you execute</h3>
@@ -1523,7 +1523,7 @@
 
     <footer>
         <a href="#" class="footer-logo">
-            <img src="favicon.png" alt="Daya Raj Dhungana" />
+            <img src="favicon.png" alt="Daya Raj Dhungana" loading="lazy" decoding="async" />
         </a>
         <ul class="footer-links">
             <li><a href="#work">Work</a></li>
@@ -1577,6 +1577,8 @@
         }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
+    <script src="assets/js/i18n-de-foodai.js"></script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>
